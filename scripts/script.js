@@ -1,9 +1,8 @@
-var div = React.DOM.div;
-var font_size = 3;
-var progress = 20;
+const div = React.DOM.div;
+const font_size = 3;
 var index = 0;
 var data = courses_data[index];
-var dataLength = courses_data.length;
+const dataLength = courses_data.length - 1;
 
 var course = function (data) {
     return div({ id: 'kurs', className: 'media course' },
@@ -12,10 +11,12 @@ var course = function (data) {
         ),
         div({ className: 'media-body' },
             React.createElement('h3', { className: 'media-heading', style: { fontSize: font_size + 'em' } }, data.title),
-            React.createElement('p', { style: { fontSize: (font_size / 2) + 'em' } }, data.description)
+            React.createElement('p', { style: { fontSize: (font_size / 2) + 'em' } }, data.description),
+            data.is_new ? React.createElement('p', { style: { fontSize: (font_size / 2) + 'em', fontWeight: 'bolder' } }, 'Nowość!') : null,
+            data.is_promo ? React.createElement('p', { style: { fontSize: (font_size / 2) + 'em', fontWeight: 'bolder' } }, 'Promocja!') : null
         )
     );
-}
+};
 
 document.getElementById('grow').addEventListener('click', function () {
     font_size = font_size + 1;
@@ -33,7 +34,7 @@ document.getElementById('prev').addEventListener('click', function () {
 });
 
 document.getElementById('next').addEventListener('click', function () {
-    index = index === dataLength - 1 ? dataLength - 1 : index + 1;
+    index = index === dataLength ? dataLength : index + 1;
     render();
 });
 
