@@ -2,6 +2,8 @@ var data = {
     title: 'Temat kursu',
     description: 'Opis kursu',
     image: 'http://placehold.it/150x150',
+    author: 'Testowy Autor',
+    duration: '6h',
     is_new: true,
     is_promo: true
 };
@@ -18,6 +20,22 @@ var course = (
             <p>{data.description}</p>
             {/* Promotion */}
             {data.is_promo ? <b>Kurs jest w Promocji!</b> : null}
+        </div>
+
+        {/* Course details collumn */}
+        <div className="media-right">
+            <table className="table course_details">
+                <tbody>
+                    <tr>
+                        <th>Autor</th>
+                        <td>{data.author}</td>
+                    </tr>
+                    <tr>
+                        <th>Czas trwania</th>
+                        <td>{data.duration}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 );
