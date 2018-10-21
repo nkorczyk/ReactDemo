@@ -33,7 +33,8 @@ var CourseMedia = function (data) {
     return <img src={data.image} alt="cover" />
 };
 
-var Course = function (data, key) {
+var Course = function (props) {
+    var data = props.data;
     return (
         <div className="media">
             {/* Course media column */}
@@ -61,16 +62,27 @@ var Course = function (data, key) {
     );
 };
 
-var CoursesList = function (list) {
+var CoursesList = function (props) {
+    var list = props.list;
     return (
         <div>
             {list.map(function (data) {
-                return <div key={data.id}>{Course(data)}</div>
+                return <Course data={data} key={data.id} />
             })}
         </div>
     );
 };
 
-var list = courses_data.slice(0, 6);
+var list = [], page = 1, perpage = 3;
+document.getElementById('show_more').addEventListener('click', function () {
+    page++;
+    update();
+});
 
-ReactDOM.render(CoursesList(list), document.getElementById('root'));
+function update() {
+    var count = page * perpage;
+    list = courses_data.slice(0, count);
+    ReactDOM.render(<CoursesList list={list} />, document.getElementById('root'));
+}
+
+update();
