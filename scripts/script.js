@@ -4,7 +4,7 @@ var index = 0;
 var data = courses_data[index];
 const dataLength = courses_data.length - 1;
 
-var course = function (data) {
+var Course = function (data) {
     return div({ id: 'kurs', className: 'media course' },
         div({ className: 'media-left' },
             React.createElement('img', { className: 'media-object', alt: 'Miniatura Kursu', src: data.image })
@@ -40,7 +40,7 @@ document.getElementById('next').addEventListener('click', function () {
 
 function render() {
     data = courses_data[index];
-    ReactDOM.render(course(data), document.getElementById('root'));
+    ReactDOM.render(Course(data), document.getElementById('root'));
 }
 
 render();
