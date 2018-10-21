@@ -13,7 +13,7 @@ var course = function (data) {
             React.createElement('h3', { className: 'media-heading', style: { fontSize: font_size + 'em' } }, data.title),
             React.createElement('p', { style: { fontSize: (font_size / 2) + 'em' } }, data.description),
             data.is_new ? React.createElement('p', { style: { fontSize: (font_size / 2) + 'em', fontWeight: 'bolder' } }, 'Nowość!') : null,
-            data.is_promo ? React.createElement('p', { style: { fontSize: (font_size / 2) + 'em', fontWeight: 'bolder' } }, 'Promocja!') : null
+            data.is_promo ? React.createElement('p', { style: { fontSize: (font_size / 2) + 'em', fontWeight: 'bolder' } }, 'Promocja!') : null,
         )
     );
 };
