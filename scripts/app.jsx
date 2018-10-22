@@ -2,32 +2,40 @@ var CourseMedia = ({ data }) => (<img src={data.image} alt="cover" />);
 var NewLabel = ({ data }) => (data.is_new ? <span className="label label-default">Nowy!</span> : null);
 var CoursePromoLabel = ({ data }) => (data.is_promo ? <b>Kurs jest w Promocji!</b> : null);
 var Button = (props) => (
-    <button className="btn btn-default">
+    <button className="btn btn-default" {...props}>
         {props.icon ? <span className={"glyphicon glyphicon-" + props.icon}></span> : null}
         {' '}
         {props.label}
     </button>
 );
+var CartButton = ({in_cart, className = "btn btn-block", icon, label}) => {
+    return (in_cart ? 
+    <Button className={className + " btn-danger"} icon={icon || "remove"} label={label || "Usuń z koszyka"} /> :
+    <Button className={className + " btn-success"} icon={icon || "shopping-cart"} label={label ||"Dodaj do koszyka"} />
+    );
+}
 var CourseActions = ({ data }) => (
     <div className="btn-group pull-right">
         <Button label="Szczegóły kursu" />
         <Button label="Dodaj do ulubionych kursów" icon="star" />
-        <Button label="Dodaj do koszyka" icon="shopping-cart" />
     </div>
 );
 var CourseDetails = ({ data }) => (
-    <table className="table course_details">
-        <tbody>
-            <tr>
-                <th>Autor</th>
-                <td>{data.author}</td>
-            </tr>
-            <tr>
-                <th>Czas trwania</th>
-                <td>{data.duration}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table className="table course_details">
+            <tbody>
+                <tr>
+                    <th>Autor</th>
+                    <td>{data.author}</td>
+                </tr>
+                <tr>
+                    <th>Czas trwania</th>
+                    <td>{data.duration}</td>
+                </tr>
+            </tbody>
+        </table>
+        <CartButton in_cart={true} />
+    </div>
 );
 
 var Course = (props) => {
@@ -63,7 +71,24 @@ var CoursesList = (props) => {
     var list = props.list;
     return (
         <div>
-            {list.map((data) => <Course data={data} key={data.id} />)}
+            <h1> Kursy </h1>
+            <hr />
+            <div>
+                {list.map((data) => <Course data={data} key={data.id} />)}
+            </div>
+        </div>
+    );
+};
+
+var ShoppingCartList = (props) => {
+    var list = props.list;
+    return (
+        <div>
+            <h1> Koszyk </h1>
+            <hr />
+            <div>
+                {list.map((data) => <Course data={data} key={data.id} />)}
+            </div>
         </div>
     );
 };
@@ -74,10 +99,16 @@ document.getElementById('show_more').addEventListener('click', function () {
     update();
 });
 
+var cart_list = courses_data.slice(0, 1);
+
 function update() {
     var count = page * perpage;
     list = courses_data.slice(0, count);
-    ReactDOM.render(<CoursesList list={list} />, document.getElementById('root'));
+    ReactDOM.render(
+        <div>
+            <ShoppingCartList list={cart_list} />
+            <CoursesList list={list} />
+        </div>, document.getElementById('root'));
 }
 
 update();
