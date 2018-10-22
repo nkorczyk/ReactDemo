@@ -1,11 +1,18 @@
 var CourseMedia = ({ data }) => (<img src={data.image} alt="cover" />);
 var NewLabel = ({ data }) => (data.is_new ? <span className="label label-default">Nowy!</span> : null);
 var CoursePromoLabel = ({ data }) => (data.is_promo ? <b>Kurs jest w Promocji!</b> : null);
+var Button = (props) => (
+    <button className="btn btn-default">
+        {props.icon ? <span className={"glyphicon glyphicon-" + props.icon}></span> : null}
+        {' '}
+        {props.label}
+    </button>
+);
 var CourseActions = ({ data }) => (
     <div className="btn-group pull-right">
-        <button className="btn btn-default">Szczegóły kursu</button>
-        <button className="btn btn-default">Dodaj do ulubionych kursów</button>
-        <button className="btn btn-default">Dodaj do koszyka</button>
+        <Button label="Szczegóły kursu" />
+        <Button label="Dodaj do ulubionych kursów" icon="star" />
+        <Button label="Dodaj do koszyka" icon="shopping-cart" />
     </div>
 );
 var CourseDetails = ({ data }) => (
