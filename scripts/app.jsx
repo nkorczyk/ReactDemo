@@ -8,10 +8,10 @@ var Button = (props) => (
         {props.label}
     </button>
 );
-var CartButton = ({in_cart, className = "btn btn-block", icon, label}) => {
-    return (in_cart ? 
-    <Button className={className + " btn-danger"} icon={icon || "remove"} label={label || "Usuń z koszyka"} /> :
-    <Button className={className + " btn-success"} icon={icon || "shopping-cart"} label={label ||"Dodaj do koszyka"} />
+var CartButton = ({ in_cart, className = "btn btn-block", icon, label }) => {
+    return (in_cart ?
+        <Button className={className + " btn-danger"} icon={icon || "remove"} label={label || "Usuń z koszyka"} /> :
+        <Button className={className + " btn-success"} icon={icon || "shopping-cart"} label={label || "Dodaj do koszyka"} />
     );
 }
 var CourseActions = ({ data }) => (
@@ -34,12 +34,16 @@ var CourseDetails = ({ data }) => (
                 </tr>
             </tbody>
         </table>
-        <CartButton in_cart={true} />
+        <CartButton in_cart={false} />
     </div>
 );
 
+var CartDetails = (props) => (
+    <CartButton in_cart={true} />
+);
+
 var Course = (props) => {
-    var { data } = props;
+    var { data, Details } = props;
     return (
         <div className="media">
             {/* Course media column */}
@@ -52,17 +56,15 @@ var Course = (props) => {
                 <h3>{data.title} <NewLabel {...props} /></h3>
                 <p>{data.description}</p>
 
-                {/* Promotion */}
-                <CoursePromoLabel {...props} />
-
-                {/* Course Actions */}
-                <CourseActions {...props} />
+                {props.children}
             </div>
 
             {/* Course details collumn */}
-            <div className="media-right">
-                <CourseDetails {...props} />
-            </div>
+            {Details ?
+                <div className="media-right">
+                    <Details {...props} />
+                </div> : null
+            }
         </div>
     );
 };
@@ -74,7 +76,13 @@ var CoursesList = (props) => {
             <h1> Kursy </h1>
             <hr />
             <div>
-                {list.map((data) => <Course data={data} key={data.id} />)}
+                {list.map((data) => <Course data={data} key={data.id} Details={CourseDetails}>
+                    {/* Promotion */}
+                    <CoursePromoLabel data={data} />
+
+                    {/* Course Actions */}
+                    <CourseActions data={data} />
+                </Course>)}
             </div>
         </div>
     );
@@ -87,7 +95,9 @@ var ShoppingCartList = (props) => {
             <h1> Koszyk </h1>
             <hr />
             <div>
-                {list.map((data) => <Course data={data} key={data.id} />)}
+                {list.map((data) => <Course data={data} key={data.id} Details={CartDetails}>
+                    <Button label="Przenieś do ulubionych kursów" icon="star" />
+                </Course>)}
             </div>
         </div>
     );
