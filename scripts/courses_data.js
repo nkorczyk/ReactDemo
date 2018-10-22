@@ -6,6 +6,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_27ded9b2-af48-4118-a02a-e35fe950a9be.png",
 		"author": "Piotr Palarz",
 		"duration": "8 godzin",
+		"price": 99.00,
 		"categories": ["JavaScript", "jQuery"],
 		"is_new": true,
 	},
@@ -16,6 +17,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_9c8b5fd6-cda2-4b2f-881e-0039d189326e.png",
 		"author": "Grzegorz Róg",
 		"duration": "13 godzin",
+		"price": 149.00,
 		"categories": ["Webdesign", "UI", "UX"]
 	},
 	{
@@ -25,6 +27,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_093c53c6-7395-4697-a141-4eae2db3d6a6.png",
 		"author": "Piotr Palarz",
 		"duration": "10 godzin",
+		"price": 139.00,
 		"categories": ["JavaScript"],
 		"is_promo": true
 	},
@@ -35,6 +38,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_22d488e0-ca9e-4fc0-ad1a-e1c6ed6663ae.png",
 		"author": "Piotr Palarz",
 		"duration": "11 godzin",
+		"price": 89.00,
 		"categories": ["JavaScript"]
 	},
 	{
@@ -44,6 +48,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_e58d27a2-23d7-40f3-89b3-91d8437f5f73.png",
 		"author": "Piotr Palarz",
 		"duration": "12 godzin",
+		"price": 99.00,
 		"categories": ["Webdevelopment", "HTML5", "CSS", "GIT", "JavaScript", "Grunt.js"]
 	},
 	{
@@ -53,6 +58,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_6b888ae8-a69d-45c2-949f-c9aec2c74917.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "7 godzin 10 minut",
+		"price": 129.00,
 		"categories": ["JavaScript", "Angular.js"]
 	},
 	{
@@ -62,6 +68,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_ad008004-a199-4d48-adc3-6a9b87fb2c70.png",
 		"author": "Piotr Palarz",
 		"duration": "11 godzin",
+		"price": 159.00,
 		"categories": ["JavaScript", "Backbone.js"]
 	},
 	{
@@ -71,6 +78,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_24fc5549-a48a-45b8-8303-023963d25932.png",
 		"author": "Bartłomiej Zass",
 		"duration": "12 godziny 30 minut",
+		"price": 100.00,
 		"categories": ["ASP.NET", "MVC"]
 	},
 	{
@@ -80,6 +88,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_c024962e-3fb9-477f-b4b9-67ca8f368921.png",
 		"author": "Sylwester Madej",
 		"duration": "6 godzin 30 minut",
+		"price": 69.00,
 		"categories": ["Java"]
 	},
 	{
@@ -89,6 +98,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_d3aace12-0c77-48f2-a89a-5b6943b86902.png",
 		"author": "Piotr Palarz",
 		"duration": "6 godzin",
+		"price": 89.00,
 		"categories": ["PHP5", "WordPress", "E-Commerce", "WooCommerce"]
 	},
 	{
@@ -98,6 +108,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_19faa6ee-81c8-4b5b-a71f-40e32527d367.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "9 godzin",
+		"price": 129.00,
 		"categories": ["PHP5", "Symfony Framework"]
 	},
 	{
@@ -107,6 +118,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_b7bf3fa8-182f-4d5b-81c8-ff9c956e3291.png",
 		"author": "Mateusz Manaj",
 		"duration": "7 godzin 30 minut",
+		"price": 69.00,
 		"categories": ["C#"]
 	},
 	{
@@ -116,6 +128,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_33fd7f37-cc01-4781-8a19-1ab03d4eb019.png",
 		"author": "Bartłomiej Zass",
 		"duration": "12 godzin",
+		"price": 99.00,
 		"categories": ["ASP.NET", "MVC"]
 	},
 	{
@@ -125,6 +138,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_20080c6e-2a56-4481-b4c7-f64dad2c64e7.png",
 		"author": "Piotr Palarz",
 		"duration": "9 godzin 30 minut",
+		"price": 100.00,
 		"categories": ["HTML", "JavaScript"]
 	},
 	{
@@ -134,6 +148,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_feedd327-5535-461b-a7c7-57edfbec3ee0.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "11 godzin",
+		"price": 129.00,
 		"categories": ["PHP5", "Symfony Framework"]
 	},
 	{
@@ -143,6 +158,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_3940d93f-1935-4e65-9d8c-b52699c3975a.png",
 		"author": "Mateusz Manaj",
 		"duration": "6 godzin 45 minut",
+		"price": 79.00,
 		"categories": ["PHP5", "Zend Framework"]
 	},
 	{
@@ -152,6 +168,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_889711b3-57e5-48a0-8466-c8aced069827.png",
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 45 minut",
+		"price": 89.00,
 		"categories": ["Responsive Design", "HTML", "CSS"]
 	},
 	{
@@ -161,6 +178,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_e2f2c368-0546-4afb-8e0b-73d9099d186b.png",
 		"author": "Piotr Palarz",
 		"duration": "6 godzin 20 minut",
+		"price": 69.00,
 		"categories": ["HTML", "CSS", "SASS", "LESS"]
 	},
 	{
@@ -170,6 +188,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_bb2ca430-c29f-49f7-ad1b-eb115b5f7d3e.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "13 godzin",
+		"price": 79.00,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -179,6 +198,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_cb38b02a-11ad-4f5e-a8d7-e58d965dc242.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "15 godzin",
+		"price": 89.00,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -188,6 +208,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_motywy_a5739f8a-8574-4231-a502-2bfb82fb8383.png",
 		"author": "Grzegorz Róg",
 		"duration": "12 godzin",
+		"price": 99.00,
 		"categories": ["WordPress"]
 	},
 	{
@@ -197,6 +218,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_pluginy_af1c8a3a-cc25-4e19-95bf-f35e5bb7848a.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "10 godzin",
+		"price": 89.00,
 		"categories": ["WordPress"]
 	},
 	{
@@ -206,6 +228,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_74a0ed48-4a8d-4449-a9c8-d09dcd3981ec.png",
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 30 minut",
+		"price": 79.00,
 		"categories": ["Adobe", "Photoshop", "HTML", "CSS"]
 	},
 	{
@@ -215,6 +238,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_100d988f-fdc5-4e29-b2f3-46dae5c0e7bb.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
+		"price": 69.00,
 		"categories": ["WordPress", "HTML", "CSS"]
 	},
 	{
@@ -224,6 +248,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_101ab164-286c-4620-adc7-96fd32da1a6b.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
+		"price": 79.00,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -233,6 +258,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_702c0d04-e0f7-49f2-acb1-a63fee503704.png",
 		"author": "Grzegorz Róg",
 		"duration": "8 godzin 45 minut",
+		"price": 79.00,
 		"categories": ["Responsive Design", "HTML", "CSS"]
 	},
 	{
@@ -242,6 +268,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_5cb650d7-1844-4853-9705-82dbc688bc57.png",
 		"author": "Maciek Zukiewicz",
 		"duration": "6 godzin 50 minut",
+		"price": 69.00,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -251,6 +278,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_61b9186a-4856-4d43-8853-94503a244816.png",
 		"author": "Mateusz Manaj",
 		"duration": "12 godzin",
+		"price": 119.00,
 		"categories": ["PHP"]
 	},
 	{
@@ -260,6 +288,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_046b8a74-dd73-4b49-a52a-556fab2fa41b.png",
 		"author": "Grzegorz Róg",
 		"duration": "3 godziny 40 minut",
+		"price": 49.00,
 		"categories": ["Adobe", "Edge", "HTML", "CSS"]
 	},
 	{
@@ -269,6 +298,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_1ca2d1b9-475b-43bb-adf5-68cb205ff849.png",
 		"author": "Grzegorz Róg",
 		"duration": "5 godzin 50 minut",
+		"price": 59.00,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -278,6 +308,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_bb8d24bd-d045-4b60-bfa0-f95303fe727f.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 40 minut",
+		"price": 79.00,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -287,6 +318,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_757a9f24-27ea-4934-b99a-118e4f9b45c0.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin",
+		"price": 59.00,
 		"categories": ["PHP5"]
 	},
 	{
@@ -296,6 +328,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_314dd37e-4f92-4621-b4a5-9a4441b876a8.png",
 		"author": "Mateusz Manaj",
 		"duration": "10 godzin 40 minut",
+		"price": 79.00,
 		"categories": ["PHP5"]
 	},
 	{
@@ -305,6 +338,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_f967437e-bbab-4754-91d8-c1c4e5df5e3a.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin",
+		"price": 79.00,
 		"categories": ["Adobe", "HTML", "CSS", "Programowanie"]
 	},
 	{
@@ -314,6 +348,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_9f562164-8068-45f0-80d0-fb872525a13c.png",
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 45 minut",
+		"price": 79.00,
 		"categories": ["Adobe", "HTML", "CSS", "Programowanie"]
 	},
 	{
@@ -323,6 +358,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_b8f5b44b-16f7-48aa-aa37-1c3d44e38acc.png",
 		"author": "Mateusz Manaj",
 		"duration": "7 godzin 40 minut",
+		"price": 59.00,
 		"categories": ["PHP5", "Programowanie"]
 	},
 	{
@@ -332,6 +368,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_b9be1c61-047b-437c-967c-603778fcac77.png",
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 40 minut",
+		"price": 49.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -341,6 +378,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_a3f68e2a-1bbb-4102-90f4-b9c6f2baf9ca.png",
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin",
+		"price": 59.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -350,6 +388,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_6554fa67-96ba-431d-a0d7-e40b086b0b20.png",
 		"author": "Grzegorz Róg",
 		"duration": "8 godzin 25 minut",
+		"price": 79.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -359,6 +398,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_ce3630cf-707b-43a3-ac2a-cce7acb75603.png",
 		"author": "Grzegorz Róg",
 		"duration": "2 godziny 45 minut",
+		"price": 39.00,
 		"categories": ["Adobe", "Pozycjonowanie", "Flash"]
 	},
 	{
@@ -368,6 +408,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_fdb1f900-2a96-4ef9-a652-07bbebfda742.png",
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 20 minut",
+		"price": 59.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -377,6 +418,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_986bcea7-2e70-46df-98d8-59afde61bad4.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 20 minut",
+		"price": 59.00,
 		"categories": ["Pozycjonowanie"]
 	},
 	{
@@ -386,6 +428,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_9105134d-46cb-4e9f-8706-1b31cdfa46e2.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 45 minut",
+		"price": 59.00,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -395,6 +438,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_3e082952-4db5-4426-bfb8-d4d0b13ab89d.png",
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 45 minut",
+		"price": 49.00,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -404,6 +448,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_f7038d24-1c28-4284-8a1d-38b4eb6d190a.png",
 		"author": "Autor:",
 		"duration": "5 godzin 30 minut",
+		"price": 49.00,
 		"categories": ["Adobe", "Flash", "ActionScript"]
 	},
 	{
@@ -413,6 +458,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_0efd6e16-9551-4373-bfc9-cd5222a484e5.png",
 		"author": "Grzegorz Róg",
 		"duration": "10 godzin",
+		"price": 39.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -422,6 +468,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/big_93a75935-82c0-4e4e-9280-22241b788a6e.png",
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin",
+		"price": 69.00,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -431,6 +478,7 @@ var courses_data = [
 		"image": "http://eduweb.pl/Images/Training/miniaturka-do-opisu-kursu_370fc688-f91a-4bd6-a4ae-02e06a0e76af.png",
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
+		"price": 79.00,
 		"categories": ["Adobe", "Muse", "Webdesign"]
 	}
 ]
