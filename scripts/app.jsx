@@ -33,22 +33,45 @@ const ShoppingCartList = ({ list }) => (
     </div>
 );
 
-var list = [], page = 1, perpage = 3;
-document.getElementById('show_more').addEventListener('click', function () {
-    page++;
-    update();
+const App = React.createClass({
+    getInitialState: function () {
+        return {
+            page: 1,
+            list: this.props.list.slice(0, 3)
+        }
+    },
+    loadMore: function () {
+        var page = this.state.page + 1;
+        this.setState({
+            page: page,
+            list: this.props.list.slice(0, page * 3)
+        });
+    },
+    render: function () {
+        return (
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xs-12">
+                            {/* <ShoppingCartList list={cart_list} /> */}
+                            <CoursesList list={this.state.list} />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-xs-12">
+                            <hr />
+                            <button className="btn btn-default btn-block" onClick={this.loadMore}> Pokaż więcej ... </button>
+                        </div>
+                    </div>
+                </div>
+                <footer className="footer">
+                    <div className="container">
+                        <p> </p>
+                    </div>
+                </footer>
+            </div>
+        );
+    }
 });
 
-var cart_list = courses_data.slice(0, 1);
-
-function update() {
-    var count = page * perpage;
-    list = courses_data.slice(0, count);
-    ReactDOM.render(
-        <div>
-            <ShoppingCartList list={cart_list} />
-            <CoursesList list={list} />
-        </div>, document.getElementById('root'));
-}
-
-update();
+ReactDOM.render(<App list={courses_data} />, document.getElementById('root'));
