@@ -31,7 +31,7 @@ const StateButton = React.createClass({
             active: true
         }
     },
-    setActive : function () {
+    setActive: function () {
         this.setState({
             active: true
         });
@@ -66,18 +66,61 @@ const ShoppingCartList = ({ list }) => (
     </div>
 );
 
+function StateStore() {
+    this.state = {};
+
+    this.dispatchEvents = () => {
+        this.callback(this.state);
+    };
+
+    this.callback = function () { };
+
+    this.addListener = (callback) => {
+        this.callback = callback;
+    };
+
+    this.createAction = function (handler) {
+        var state = this.state;
+        return function () {
+            handler.apply(state, arguments);
+            AppState.dispatchEvents();
+        }
+    };
+
+    this.createActions = function (handlersMap) {
+        var actions = {};
+        for (let name in handlersMap) {
+            actions[name] = this.createAction(handlersMap[name]);
+        }
+        return actions;
+    };
+}
+
+var AppState = new StateStore();
+AppState.state = {
+    page: 1,
+    list: courses_data.slice(0, 3),
+    courses: courses_data
+};
+
+var actions = AppState.createActions({
+    loadMore: function (event) {
+        var page = this.page + 1;
+        this.page = page;
+        this.list = this.courses.slice(0, this.page * 3);
+    }
+});
+
 const App = React.createClass({
     getInitialState: function () {
-        return {
-            page: 1,
-            list: this.props.list.slice(0, 3)
-        }
+        return this.props.store.state;
     },
-    loadMore: function () {
-        var page = this.state.page + 1;
-        this.setState({
-            page: page,
-            list: this.props.list.slice(0, page * 3)
+    componentDidMount: function () {
+        AppState.addListener((state) => {
+            this.setState({
+                page: state.page,
+                list: state.list
+            });
         });
     },
     render: function () {
@@ -93,7 +136,7 @@ const App = React.createClass({
                     <div className="row">
                         <div className="col-xs-12">
                             <hr />
-                            <button className="btn btn-default btn-block" onClick={this.loadMore}> Pokaż więcej ... </button>
+                            <button className="btn btn-default btn-block" onClick={actions.loadMore}> Pokaż więcej ... </button>
                         </div>
                     </div>
                 </div>
@@ -107,4 +150,4 @@ const App = React.createClass({
     }
 });
 
-ReactDOM.render(<App list={courses_data} />, document.getElementById('root'));
+ReactDOM.render(<App store={AppState} />, document.getElementById('root'));
