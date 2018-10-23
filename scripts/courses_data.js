@@ -7,6 +7,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "8 godzin",
 		"price": 99.00,
+		"rating": 4,
 		"categories": ["JavaScript", "jQuery"],
 		"is_new": true,
 	},
@@ -18,6 +19,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "13 godzin",
 		"price": 149.00,
+		"rating": 5,
 		"categories": ["Webdesign", "UI", "UX"]
 	},
 	{
@@ -28,6 +30,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "10 godzin",
 		"price": 139.00,
+		"rating": 5,
 		"categories": ["JavaScript"],
 		"is_promo": true
 	},
@@ -39,6 +42,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "11 godzin",
 		"price": 89.00,
+		"rating": 5,
 		"categories": ["JavaScript"]
 	},
 	{
@@ -49,6 +53,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "12 godzin",
 		"price": 99.00,
+		"rating": 5,
 		"categories": ["Webdevelopment", "HTML5", "CSS", "GIT", "JavaScript", "Grunt.js"]
 	},
 	{
@@ -59,6 +64,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "7 godzin 10 minut",
 		"price": 129.00,
+		"rating": 5,
 		"categories": ["JavaScript", "Angular.js"]
 	},
 	{
@@ -69,6 +75,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "11 godzin",
 		"price": 159.00,
+		"rating": 5,
 		"categories": ["JavaScript", "Backbone.js"]
 	},
 	{
@@ -79,6 +86,7 @@ var courses_data = [
 		"author": "Bartłomiej Zass",
 		"duration": "12 godziny 30 minut",
 		"price": 100.00,
+		"rating": 5,
 		"categories": ["ASP.NET", "MVC"]
 	},
 	{
@@ -89,6 +97,7 @@ var courses_data = [
 		"author": "Sylwester Madej",
 		"duration": "6 godzin 30 minut",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["Java"]
 	},
 	{
@@ -99,6 +108,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "6 godzin",
 		"price": 89.00,
+		"rating": 5,
 		"categories": ["PHP5", "WordPress", "E-Commerce", "WooCommerce"]
 	},
 	{
@@ -109,6 +119,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "9 godzin",
 		"price": 129.00,
+		"rating": 5,
 		"categories": ["PHP5", "Symfony Framework"]
 	},
 	{
@@ -119,6 +130,7 @@ var courses_data = [
 		"author": "Mateusz Manaj",
 		"duration": "7 godzin 30 minut",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["C#"]
 	},
 	{
@@ -129,6 +141,7 @@ var courses_data = [
 		"author": "Bartłomiej Zass",
 		"duration": "12 godzin",
 		"price": 99.00,
+		"rating": 5,
 		"categories": ["ASP.NET", "MVC"]
 	},
 	{
@@ -139,6 +152,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "9 godzin 30 minut",
 		"price": 100.00,
+		"rating": 5,
 		"categories": ["HTML", "JavaScript"]
 	},
 	{
@@ -149,6 +163,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "11 godzin",
 		"price": 129.00,
+		"rating": 5,
 		"categories": ["PHP5", "Symfony Framework"]
 	},
 	{
@@ -159,6 +174,7 @@ var courses_data = [
 		"author": "Mateusz Manaj",
 		"duration": "6 godzin 45 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["PHP5", "Zend Framework"]
 	},
 	{
@@ -169,6 +185,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 45 minut",
 		"price": 89.00,
+		"rating": 5,
 		"categories": ["Responsive Design", "HTML", "CSS"]
 	},
 	{
@@ -179,6 +196,7 @@ var courses_data = [
 		"author": "Piotr Palarz",
 		"duration": "6 godzin 20 minut",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS", "SASS", "LESS"]
 	},
 	{
@@ -189,6 +207,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "13 godzin",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -199,6 +218,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "15 godzin",
 		"price": 89.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -209,6 +229,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "12 godzin",
 		"price": 99.00,
+		"rating": 5,
 		"categories": ["WordPress"]
 	},
 	{
@@ -219,6 +240,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "10 godzin",
 		"price": 89.00,
+		"rating": 5,
 		"categories": ["WordPress"]
 	},
 	{
@@ -229,6 +251,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 30 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Adobe", "Photoshop", "HTML", "CSS"]
 	},
 	{
@@ -239,6 +262,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["WordPress", "HTML", "CSS"]
 	},
 	{
@@ -249,6 +273,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -259,6 +284,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "8 godzin 45 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Responsive Design", "HTML", "CSS"]
 	},
 	{
@@ -269,6 +295,7 @@ var courses_data = [
 		"author": "Maciek Zukiewicz",
 		"duration": "6 godzin 50 minut",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -279,6 +306,7 @@ var courses_data = [
 		"author": "Mateusz Manaj",
 		"duration": "12 godzin",
 		"price": 119.00,
+		"rating": 5,
 		"categories": ["PHP"]
 	},
 	{
@@ -289,6 +317,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "3 godziny 40 minut",
 		"price": 49.00,
+		"rating": 5,
 		"categories": ["Adobe", "Edge", "HTML", "CSS"]
 	},
 	{
@@ -299,6 +328,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "5 godzin 50 minut",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -309,6 +339,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 40 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["PHP5", "Joomla"]
 	},
 	{
@@ -319,6 +350,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["PHP5"]
 	},
 	{
@@ -329,6 +361,7 @@ var courses_data = [
 		"author": "Mateusz Manaj",
 		"duration": "10 godzin 40 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["PHP5"]
 	},
 	{
@@ -339,6 +372,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Adobe", "HTML", "CSS", "Programowanie"]
 	},
 	{
@@ -349,6 +383,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin 45 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Adobe", "HTML", "CSS", "Programowanie"]
 	},
 	{
@@ -359,6 +394,7 @@ var courses_data = [
 		"author": "Mateusz Manaj",
 		"duration": "7 godzin 40 minut",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["PHP5", "Programowanie"]
 	},
 	{
@@ -369,6 +405,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 40 minut",
 		"price": 49.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -379,6 +416,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -389,6 +427,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "8 godzin 25 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -399,6 +438,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "2 godziny 45 minut",
 		"price": 39.00,
+		"rating": 5,
 		"categories": ["Adobe", "Pozycjonowanie", "Flash"]
 	},
 	{
@@ -409,6 +449,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 20 minut",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -419,6 +460,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 20 minut",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["Pozycjonowanie"]
 	},
 	{
@@ -429,6 +471,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 45 minut",
 		"price": 59.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -439,6 +482,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "6 godzin 45 minut",
 		"price": 49.00,
+		"rating": 5,
 		"categories": ["HTML", "CSS"]
 	},
 	{
@@ -449,6 +493,7 @@ var courses_data = [
 		"author": "Autor:",
 		"duration": "5 godzin 30 minut",
 		"price": 49.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash", "ActionScript"]
 	},
 	{
@@ -459,6 +504,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "10 godzin",
 		"price": 39.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -469,6 +515,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "9 godzin",
 		"price": 69.00,
+		"rating": 5,
 		"categories": ["Adobe", "Flash"]
 	},
 	{
@@ -479,6 +526,7 @@ var courses_data = [
 		"author": "Grzegorz Róg",
 		"duration": "7 godzin 30 minut",
 		"price": 79.00,
+		"rating": 5,
 		"categories": ["Adobe", "Muse", "Webdesign"]
 	}
 ]
