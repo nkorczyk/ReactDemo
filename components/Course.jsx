@@ -3,6 +3,12 @@ const CourseDetails = ({ data }) => (
         <table className="table course_details">
             <tbody>
                 <tr>
+                    <th>Ocena</th>
+                    <td>
+                        <Rating max={5} value={2} onChange={(rating) => console.log(rating)}/>
+                    </td>
+                </tr>
+                <tr>
                     <th>Autor</th>
                     <td>{data.author}</td>
                 </tr>
