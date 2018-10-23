@@ -10,12 +10,45 @@ const CoursesList = (props) => {
                     <CoursePromoLabel data={data} />
 
                     {/* Course Actions */}
-                    <CourseActions data={data} />
+                    <div className="btn-group pull-right">
+                        <Button label="Szczegóły kursu" />
+                        <StateButton />
+                    </div>
                 </Course>)}
             </div>
         </div>
     );
 };
+
+const StateButton = React.createClass({
+    getInitialState: function () {
+        return {
+            active: this.props.active
+        };
+    },
+    getDefaultProps: function () {
+        return {
+            active: true
+        }
+    },
+    setActive : function () {
+        this.setState({
+            active: true
+        });
+    },
+    setInactive: function () {
+        this.setState({
+            active: false
+        });
+    },
+    render: function () {
+        return (
+            this.state.active ?
+                <Button label="Usuń z ulubionych" icon="star" onClick={this.setInactive} /> :
+                <Button label="Dodaj do ulubionych" icon="star-empty" onClick={this.setActive} />
+        );
+    }
+});
 
 const ShoppingCartList = ({ list }) => (
     <div>
