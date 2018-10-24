@@ -11,7 +11,8 @@ AppState.setState({
     favourites_list: [],
     favourites_map: {},
     cart_list: [],
-    cart_map: {}
+    cart_map: {}, 
+    activeTab: 'Kursy'
 });
 
 const actions = AppState.createActions({
@@ -37,6 +38,9 @@ const actions = AppState.createActions({
         this.cart_map[id] = false;
         let index = this.cart_list.findIndex((c) => c.id === id);
         if (index !== -1) this.cart_list.splice(index, 1);
+    },
+    navigateTo: function (tabName) {
+        this.activeTab = tabName;
     }
 });
 
