@@ -5,7 +5,7 @@ const CourseDetails = ({ data }) => (
                 <tr>
                     <th>Ocena</th>
                     <td>
-                        <Rating max={5} value={2} onChange={(rating) => console.log(rating)}/>
+                        <Rating max={5} value={2} />
                     </td>
                 </tr>
                 <tr>
@@ -17,32 +17,27 @@ const CourseDetails = ({ data }) => (
                     <td>{data.duration}</td>
                 </tr>
                 <tr>
-		  			<th>Cena</th>
-		  			<td>{data.price} PLN</td>
-	  			</tr>
+                    <th>Cena</th>
+                    <td>{data.price} PLN</td>
+                </tr>
             </tbody>
         </table>
-        <CartButton in_cart={false} />
+        <CartButton course={data} />
     </div>
 );
 
-const CourseMedia = ({ data }) => (<img src={data.image} alt="cover" />);
+const CourseMedia = ({ data }) => (<img src={data.image} alt="cover" />)
 
-const NewLabel = ({ data }) => (data.is_new ? <span className="label label-default">Nowy!</span> : null);
+const NewLabel = ({ data }) => (data.is_new ? <span className="label label-default">Nowy!</span> : null)
 
-const CoursePromoLabel = ({ data }) => (data.is_promo ? <b>Kurs jest w Promocji!</b> : null);
-
-const CourseActions = ({ data }) => (
-    <div className="btn-group pull-right">
-        <Button label="Szczegóły kursu" />
-        <Button label="Dodaj do ulubionych" icon="star" />
-    </div>
-);
+const CoursePromoLabel = ({ data }) => (data.is_promo ? <b>Kurs jest w PROMOCJI!</b> : null)
 
 const Course = (props) => {
-    var { data, Details } = props;
+    const { data, Details } = props;
+
     return (
-        <div className="media">
+        <div className="media course">
+
             {/* Course media column */}
             <div className="media-left">
                 <CourseMedia {...props} />
@@ -56,12 +51,12 @@ const Course = (props) => {
                 {props.children}
             </div>
 
-            {/* Course details collumn */}
+            {/* Course details column */}
             {Details ?
                 <div className="media-right">
                     <Details {...props} />
                 </div> : null
             }
         </div>
-    );
+    )
 };

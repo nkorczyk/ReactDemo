@@ -17,7 +17,7 @@ const App = React.createClass({
                 <div className="container">
                     <div className="row">
                         <div className="col-xs-12">
-                            {/* <ShoppingCartList list={cart_list} /> */}
+                            <ShoppingCartList list={this.state.cart_list} />
                             <FavouritesCoursesList list={this.state.favourites_list} />
                             <CoursesList list={this.state.courses_list} />
                         </div>
