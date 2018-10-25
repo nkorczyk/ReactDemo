@@ -57,7 +57,9 @@ const CoursesEditor = React.createClass({
                 <CoursesSearch courses={this.props.courses} onSelect={this.select} selected={this.state.selected}></CoursesSearch>
             </div>
             {this.state.selected ? <div className="col-xs-8">
-                <CourseForm course={this.state.selected}></CourseForm>
+                <CourseForm course={this.state.selected}
+                    onCancel={() => this.select(null)}
+                    onSave={(course) => actions.saveCourse(course)}></CourseForm>
             </div> : null}
         </div>
     }
@@ -66,29 +68,36 @@ const CoursesEditor = React.createClass({
 const CourseForm = React.createClass({
     getInitialState: function () {
         return {
-            course: this.props.course
+            course: { ...this.props.course }
         };
     },
     componentWillReceiveProps: function (nextProps) {
         this.setState({
-            course: nextProps.course
+            course: { ...nextProps.course }
         })
     },
     changedTitle: function (event) {
-        let course = this.state.course;
-        course.title = event.target.value;
-
         this.setState({
-            course: course
+            course: { ...this.state.course, title: event.target.value }
         });
+    },
+    onSave: function (event) {
+        event.preventDefault();
+        this.props.onSave(this.state.course);
     },
     render: function () {
         return <div>
-            <form>
+            <form onSubmit={this.onSave}>
                 <div className="form-group">
                     <label className="control-label">nazwa Kursu:</label>
                     <div>
                         <input type="text" className="form-control" value={this.state.course.title} onChange={this.changedTitle}></input>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <div className="btn-group pull-right">
+                        <input type="button" className="btn btn-danger" value="Anuluj" onClick={this.props.onCancel} />
+                        <input type="submit" className="btn btn-success" value="Zapisz" />
                     </div>
                 </div>
             </form>
