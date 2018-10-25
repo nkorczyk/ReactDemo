@@ -12,7 +12,7 @@ AppState.setState({
     favourites_map: {},
     cart_list: [],
     cart_map: {}, 
-    activeTab: 'Kursy'
+    activeTab: 'Wyszukiwarka'
 });
 
 const actions = AppState.createActions({
