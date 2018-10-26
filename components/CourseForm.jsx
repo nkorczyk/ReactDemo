@@ -27,12 +27,17 @@ const CourseForm = React.createClass({
     changedIsPromo: function (event) {
         this.setState({
             course: { ...this.state.course, is_promo: !this.state.course.is_promo }
-        })
+        });
     },
     changedIsNew: function (event) {
         this.setState({
             course: { ...this.state.course, is_new: !this.state.course.is_new }
-        })
+        });
+    },
+    changedCategories: function (categories) {
+        this.setState({
+            course: { ...this.state.course, categories: categories }
+        });
     },
     onSave: function (event) {
         event.preventDefault();
@@ -78,6 +83,16 @@ const CourseForm = React.createClass({
                                         <option key={author} value={author}>{author}</option>
                                     )}
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xs-6">
+                        <div className="form-group">
+                            <label className="control-label">Kategorie:</label>
+                            <div>
+                                <CourseCategoriesEditor
+                                    onChange={this.changedCategories}
+                                    categories={this.state.course.categories}></CourseCategoriesEditor>
                             </div>
                         </div>
                     </div>
