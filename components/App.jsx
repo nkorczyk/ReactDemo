@@ -81,6 +81,16 @@ const CourseForm = React.createClass({
             course: { ...this.state.course, title: event.target.value }
         });
     },
+    changedDescription: function (event) {
+        this.setState({
+            course: { ...this.state.course, description: event.target.value }
+        });
+    },
+    changedAuthor: function (event) {
+        this.setState({
+            course: { ...this.state.course, author: event.target.value }
+        });
+    },
     onSave: function (event) {
         event.preventDefault();
         this.props.onSave(this.state.course);
@@ -89,9 +99,25 @@ const CourseForm = React.createClass({
         return <div>
             <form onSubmit={this.onSave}>
                 <div className="form-group">
-                    <label className="control-label">nazwa Kursu:</label>
+                    <label className="control-label">Nazwa Kursu:</label>
                     <div>
                         <input type="text" className="form-control" value={this.state.course.title} onChange={this.changedTitle}></input>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Opis Kursu:</label>
+                    <div>
+                        <textarea rows="10" type="text" className="form-control" value={this.state.course.description} onChange={this.changedDescription}></textarea>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Autor:</label>
+                    <div>
+                        <select className="form-control" value={this.state.course.author} onChange={this.changedAuthor}>
+                            {Object.keys(AppState.state.authors_map).map(author => 
+                                <option key={author} value={author}>{author}</option>
+                            )}
+                        </select>
                     </div>
                 </div>
                 <div className="form-group">
