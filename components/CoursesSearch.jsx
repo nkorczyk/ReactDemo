@@ -21,9 +21,30 @@ const CoursesSearch = React.createClass({
             });
         }, 500);
     },
+    componentDidMount: function () {
+        console.log(this.refs.query);
+        this.refs.query.focus();
+    },
+    onKeyUp: function (event) {
+        let UP = 38, DOWN = 40;
+        let selected = this.props.selected;
+        let index = selected ? this.state.filtered_list.indexOf(selected) : -1;
+
+        if (event.keyCode === DOWN) {
+            index++
+        } else if (event.keyCode === UP) {
+            index--;
+        }
+
+        let course = this.state.filtered_list[index];
+
+        if (course) {
+            this.props.onSelect(course);
+        }
+    },
     render: function () {
-        return <div>
-            <input type="text" className="form-control" onChange={this.filterList} placeholder="Filtruj listę kursów" />
+        return <div onKeyUp={this.onKeyUp}>
+            <input ref="query" type="text" className="form-control" onChange={this.filterList} placeholder="Filtruj listę kursów" />
             <hr />
             <div className="list-group">
                 {this.state.filtered_list.map((course) => (
