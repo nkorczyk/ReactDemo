@@ -4,4 +4,4 @@ var app = {
     version: version
 };
 
-module.exports = app;
+export default app;
