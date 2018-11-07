@@ -1,4 +1,4 @@
-var courses_data = [
+export default [
 	{
 		"id": 0,
 		"title": "Kurs Programowanie w jQuery - w Praktyce",
