@@ -11,6 +11,9 @@ import './vendor/typeahead.bundle.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
-import App from './components/App';
+import {AppContainer} from './containers/App';
+import Provider from './Provider';
 
-ReactDOM.render(<App store={AppState} actions={actions} />, document.getElementById('root'));
+ReactDOM.render(<Provider store={AppState} actions={actions} >
+    <AppContainer />
+</Provider>, document.getElementById('root'));
