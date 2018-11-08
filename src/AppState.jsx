@@ -8,6 +8,11 @@ AppState.setState({
 	page: 1,
 	courses_source: courses_data,
 
+	labels: {
+		add_fav: "Dodaj do Ulubionych",
+		remove_fav: "Usuń z Ulubionych",
+	},
+
 	courses_map: courses_data.reduce((map, course) => {
 		map[course.id] = course;
 		return map;

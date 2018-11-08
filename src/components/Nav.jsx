@@ -7,23 +7,23 @@ import actions from '../actions'
 export const Tabs = (props) => {
 	let tabs = React.Children.toArray(props.children)
 
-	return <div>{tabs.filter(tab => props.activeTab === tab.props.name )}</div>
+	return <div>{tabs.filter(tab => props.activeTab === tab.props.name)}</div>
 }
 export const TabPanel = (props) => {
 	return <div>{props.children}</div>
 }
 
-export const TabsNav =  (props) => {
+export const TabsNav = (props) => {
 	let tabs = React.Children.toArray(props.children)
 
 	return <ul className={props.className || "nav nav-tabs"}>
-		{tabs.map(tab => <li 
+		{tabs.map(tab => <li
 			key={tab.props.name}
-			className={props.activeTab === tab.props.name? 'active' : ''}
-			onClick={(e)=>props.onChange(tab.props.name,e)}
+			className={props.activeTab === tab.props.name ? 'active' : ''}
+			onClick={(e) => props.onChange(tab.props.name, e)}
 		>
 			{tab}
-		</li> )}
+		</li>)}
 	</ul>
 }
 
@@ -40,26 +40,51 @@ export const Tab = (props) => {
 
 export const Nav = (props) => {
 	return <nav className="navbar navbar-default">
-	  <div className="container-fluid">
-	    <div className="navbar-header">
-	      <a className="navbar-brand" href="#">EduKursy</a>
-	    </div> 
+		<div className="container-fluid">
+			<div className="navbar-header">
+				<a className="navbar-brand" href="#">EduKursy</a>
+			</div>
 
-    	<TabsNav className="nav navbar-nav navbar-left" onChange={props.onChange} activeTab={props.activeTab}>
-    		<Tab name="Kursy"></Tab>
-    		<Tab name="Ulubione"></Tab>
-    	</TabsNav>
+			<TabsNav className="nav navbar-nav navbar-left" onChange={props.onChange} activeTab={props.activeTab}>
+				<Tab name="Kursy"></Tab>
+				<Tab name="Ulubione"></Tab>
+			</TabsNav>
 
-    	<TabsNav className="nav navbar-nav navbar-right" onChange={props.onChange} activeTab={props.activeTab}>
-    		<Tab name="Wyszukiwarka"></Tab>
-    		<Tab name="Koszyk">
-	    		<a href="#">
-		        	<Droppable onDrop={(data)=>actions.addToCart(data)}>
-	    				<span className="glyphicon glyphicon-shopping-cart"></span> Koszyk {AppState.state.cart_list.length}
-		        	</Droppable>
-	    		</a>
-    		</Tab>
-    	</TabsNav>
-      </div>
-  	</nav>
+			<TabsNav className="nav navbar-nav navbar-right" onChange={props.onChange} activeTab={props.activeTab}>
+				<Tab name="Wyszukiwarka"></Tab>
+				<Tab name="Koszyk">
+					<a href="#">
+						<Droppable onDrop={(data) => actions.addToCart(data)}>
+							<span className="glyphicon glyphicon-shopping-cart"></span> Koszyk {AppState.state.cart_list.length}
+						</Droppable>
+					</a>
+				</Tab>
+			</TabsNav>
+		</div>
+	</nav>
+}
+
+export const NavBar = (props) => {
+	return <nav className="navbar navbar-default">
+		<div className="container-fluid">
+			<div className="navbar-header">
+				<a className="navbar-brand" href="#/">EduKursy</a>
+			</div>
+
+			<ul className="nav navbar-nav navbar-left">
+				<li> <a href="#/kursy">Kursy</a></li>
+				<li> <a href="#/ulubione">Ulubione</a></li>
+			</ul>
+
+			<ul className="nav navbar-nav navbar-right">
+				<li> <a href="#/wyszukiwarka">Wyszukiwarka</a></li>
+				<li> <a href="#/koszyk">
+					<Droppable onDrop={(data) => actions.addToCart(data)}>
+						<span className="glyphicon glyphicon-shopping-cart"></span> Koszyk {AppState.state.cart_list.length}
+					</Droppable>
+				</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 }
