@@ -13,7 +13,7 @@ export const TabPanel = (props) => {
 	return <div>{props.children}</div>
 }
 
-export const TabsNav = (props) => {
+export const TabsNav =  (props) => {
 	let tabs = React.Children.toArray(props.children)
 
 	return <ul className={props.className || "nav nav-tabs"}>
@@ -26,6 +26,14 @@ export const TabsNav = (props) => {
 		</li> )}
 	</ul>
 }
+
+TabsNav.propTypes = {
+	className: React.PropTypes.string,
+	onChange: React.PropTypes.func.isRequired,
+	activeTab: React.PropTypes.string,
+	children: React.PropTypes.arrayOf(React.PropTypes.element)
+};
+
 export const Tab = (props) => {
 	return props.children || <a href="#">{props.name}</a>
 }

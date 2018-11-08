@@ -3,6 +3,12 @@ import Button from './Button'
 
 export const FavButton = React.createClass({
 
+	propTypes:{
+		active: React.PropTypes.bool,
+		onActivate: React.PropTypes.func.isRequired,
+		onDeactivate: React.PropTypes.func.isRequired
+	},
+
 	getInitialState: function(){
 		return {
 			active: this.props.active
