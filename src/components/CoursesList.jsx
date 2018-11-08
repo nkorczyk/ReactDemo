@@ -11,7 +11,7 @@ if (module.hot) {
   module.hot.accept();
 }
 
-export const CoursesList = ({list}) => (
+export const CoursesList = ({list}, context) => (
 	<div>
 		<h1> Kursy </h1>
 		<hr />
@@ -25,8 +25,8 @@ export const CoursesList = ({list}) => (
 						<div className="btn-group pull-right">
 							<Button label="Szczególy kursu" />
 							<FavButton active={AppState.state.favourites_map[data.id]} 
-								onActivate={()=>actions.addFavourite(data.id)} 
-								onDeactivate={()=>actions.removeFavourite(data.id)}  />
+								onActivate={()=>context.actions.addFavourite(data.id)} 
+								onDeactivate={()=>context.actions.removeFavourite(data.id)}  />
 						</div>
 					</Course>
 				</Draggable>
@@ -34,3 +34,7 @@ export const CoursesList = ({list}) => (
 		</div>
 	</div>
 )
+
+CoursesList.contextTypes = {
+	actions: React.PropTypes.object
+};

@@ -23,6 +23,21 @@ const App = React.createClass({
 		})
 	},
 
+	getChildContext: function(){
+		return {
+			labels:{
+				add_fav: "Dodaj do Ulubionych",
+				remove_fav: "Usuń z Ulubionych",
+			},
+			actions: this.props.actions
+		}
+	},
+
+	childContextTypes:{
+		labels: React.PropTypes.object,
+		actions: React.PropTypes.object,
+	},
+
 	render: function(){
 		return (
 		  <div>

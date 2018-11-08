@@ -43,10 +43,14 @@ export const FavButton = React.createClass({
 		this.props.onDeactivate()
 	},
 
+	contextTypes:{
+		labels: React.PropTypes.object
+	},
+
 	render: function(){
 		return (this.state.active?
-			<Button label="Usuń z ulubionych" icon="star" onClick={this.setInactive} /> :
-			<Button label="Dodaj do ulubionych" icon="star-empty" onClick={this.setActive} />
+			<Button label={this.context.labels.remove_fav} icon="star" onClick={this.setInactive} /> :
+			<Button label={this.context.labels.add_fav} icon="star-empty" onClick={this.setActive} />
 		)
 	}
 })
