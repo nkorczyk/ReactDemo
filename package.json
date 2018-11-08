@@ -22,6 +22,7 @@
     "jquery": "^3.1.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
+    "react-router": "^2.8.1",
     "typeahead.js": "^0.11.1"
   },
   "devDependencies": {

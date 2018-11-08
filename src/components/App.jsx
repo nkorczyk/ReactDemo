@@ -1,8 +1,11 @@
 import React from 'react';
 import { Nav, Tabs, TabPanel } from './Nav';
-import { CoursesEditor } from './CoursesEditor';
 import Button from './Button';
+import {Router, Route, Redirect, hashHistory} from 'react-router';
 import {CoursesListContainer, ShoppingCartListContainer, FavouritesCoursesListContainer} from '../containers/courses_list';
+import {CoursesEditorContainer} from '../containers/courses_editor';
+
+const NotFound = () => <p className="text-center">Nie znaleziono strony</p>
 
 const App = React.createClass({
 
@@ -30,7 +33,16 @@ const App = React.createClass({
 					</div>
 					<div className="row">
 						<div className="col-xs-12">
-							<Tabs activeTab={this.props.activeTab}>
+							<Router history={hashHistory}>
+								<Redirect from="/" to="kursy" />
+								<Route path="kursy" component={CoursesListContainer} />
+								<Route path="koszyk" component={ShoppingCartListContainer} />
+								<Route path="ulubione" component={FavouritesCoursesListContainer} />
+								<Route path="wyszukaj" component={CoursesEditorContainer} />
+								<Route path="*" component={NotFound} />
+							</Router>
+
+							{/* <Tabs activeTab={this.props.activeTab}>
 								<TabPanel name="Wyszukiwarka">
 									<CoursesEditor courses={this.props.courses_source}></CoursesEditor>
 								</TabPanel>
@@ -45,7 +57,7 @@ const App = React.createClass({
 									<hr />
 									<button className="btn btn-default btn-block" onClick={this.props.loadMore}> Pokaż więcej ... </button>
 								</TabPanel>
-							</Tabs>
+							</Tabs> */}
 						</div>
 					</div>
 				</div>
