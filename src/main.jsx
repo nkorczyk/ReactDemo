@@ -20,6 +20,7 @@ import { CoursesEditorContainer } from './containers/courses_editor';
 import { CourseContainer } from './containers/CourseContainer';
 
 import { Layout } from './components/Layout';
+import AppStore from './stores/appStore';
 
 import {CourseDetails} from "./components/Course";
 

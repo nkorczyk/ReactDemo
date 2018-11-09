@@ -1,35 +1,49 @@
 import StateStore from './StateStore';
-import courses_data from './courses_data';
 
 const AppState = new StateStore();
 
+import courses_data from './courses_data';
+
+let courses_map = courses_data.reduce((map, course) => {
+	map[course.id] = course;
+	return map;
+}, {})
+
+let authors_map = courses_data.reduce((map, course) => (
+	(map[course.author] = course.author) && map
+), {})
+
+let authors_list = Object.keys(authors_map);
 
 AppState.setState({
 	page: 1,
 	courses_source: courses_data,
+	courses_data: courses_data,
 
 	labels: {
 		add_fav: "Dodaj do Ulubionych",
 		remove_fav: "Usuń z Ulubionych",
 	},
 
-	courses_map: courses_data.reduce((map, course) => {
-		map[course.id] = course;
-		return map;
-	},{}),
-	courses_list: courses_data.slice(0,3),
+	courses: {
+		map: courses_map,
+		list: courses_data.slice(0, 3),
+	},
 
-	authors_map: courses_data.reduce((map, course)=>(
-		(map[course.author] = course.author) && map
-	),{}),
+	authors: {
+		map: authors_map,
+		list: authors_list,
+	},
 
-	favourites_list: [],
-	favourites_map: {},
+	favourites: {
+		map: {},
+		list: []
+	},
 
-	cart_list: [],
-	cart_map: {},
-
-	activeTab: 'Kursy',
+	cart: {
+		map: {},
+		list: []
+	}
 })
 
 export default AppState
