@@ -1,8 +1,8 @@
 import React from 'react';
-import { Droppable, Draggable } from './DragNDrop'
-import AppState from '../AppState'
-import actions from '../actions'
-
+import { Droppable, Draggable } from './DragNDrop';
+import AppState from '../AppState';
+import actions from '../actions';
+import { Link } from 'react-router';
 
 export const Tabs = (props) => {
 	let tabs = React.Children.toArray(props.children)
@@ -68,21 +68,21 @@ export const NavBar = (props) => {
 	return <nav className="navbar navbar-default">
 		<div className="container-fluid">
 			<div className="navbar-header">
-				<a className="navbar-brand" href="#/">EduKursy</a>
+				<Link activeClassName="active" className="navbar-brand" to="/">EduKursy</Link>
 			</div>
 
 			<ul className="nav navbar-nav navbar-left">
-				<li> <a href="#/kursy">Kursy</a></li>
-				<li> <a href="#/ulubione">Ulubione</a></li>
+				<li><Link activeClassName="active" to="/kursy">Kursy</Link></li>
+				<li><Link activeClassName="active" to="/ulubione">Ulubione</Link></li>
 			</ul>
 
 			<ul className="nav navbar-nav navbar-right">
-				<li> <a href="#/wyszukiwarka">Wyszukiwarka</a></li>
-				<li> <a href="#/koszyk">
+				<li><Link activeClassName="active" to="/wyszukaj">Wyszukaj</Link></li>
+				<li><Link activeClassName="active" to="/koszyk">
 					<Droppable onDrop={(data) => actions.addToCart(data)}>
 						<span className="glyphicon glyphicon-shopping-cart"></span> Koszyk {AppState.state.cart_list.length}
 					</Droppable>
-				</a>
+				</Link>
 				</li>
 			</ul>
 		</div>

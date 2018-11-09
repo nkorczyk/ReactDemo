@@ -2,11 +2,6 @@ import React from 'react';
 import {Rating} from './Rating'
 import {CartButton} from './Cart'
 
-if (module.hot) {
-  module.hot.accept();
-}
-
-
 export const CourseDetails = ({data}) => (
 	<div>
 	  	<table className="table course_details">
@@ -35,6 +30,9 @@ export const CourseDetails = ({data}) => (
 	</div>
 )
 
+import { Link } from 'react-router';
+
+
 export const CourseMedia = ({data}) => ( <img src={data.image} alt="cover" />)
 
 export const NewLabel = ({data}) => ( data.is_new? <span className="label label-default">Nowy!</span> : null)
@@ -54,7 +52,7 @@ export const Course = (props) => {
 
 	  		{/* Course content column */}
 	  		<div className="media-body">
-		  		<h3>{data.title} <NewLabel {...props} /></h3>
+		  		<h3><Link to={ 'kursy/' + data.id } >{data.title}</Link> <NewLabel {...props} /></h3>
 	  			<p>{data.description}</p>
 
 		  		{props.children}

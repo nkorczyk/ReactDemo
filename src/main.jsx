@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 import { AppContainer } from './containers/App';
 import Provider from './Provider';
 
-import { Router, Route, IndexRoute, Redirect, IndexRedirect, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, Redirect, IndexRedirect, browserHistory } from 'react-router';
 import { CoursesListContainer, ShoppingCartListContainer, FavouritesCoursesListContainer } from './containers/courses_list';
 import { CoursesEditorContainer } from './containers/courses_editor';
 import { CourseContainer } from './containers/CourseContainer';
@@ -26,7 +26,7 @@ import {CourseDetails} from "./components/Course";
 const NotFound = () => <p className="text-center">Nie znaleziono strony</p>
 
 ReactDOM.render(<Provider store={AppState} actions={actions} >
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
         <Route path="/" component={Layout}>
             <IndexRedirect to="kursy" />
             <Route path="kursy" component={CoursesListContainer}>
