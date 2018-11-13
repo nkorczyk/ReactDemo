@@ -6,7 +6,7 @@ export const FavButtonContainer = connect(
 	// state
 	(state)=>({
 		favourites: state.favourites.map,
-		labels: state.labels
+		labels: state.config.labels
 	}),
 	// actions
 	({addFavourite, removeFavourite})=>({

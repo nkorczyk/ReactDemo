@@ -1,15 +1,13 @@
 import createStore from './createStore';
 import ACTIONS from '../constants/actions';
 import revisionStore from '../stores/revisionStore';
+import configStore from '../stores/configStore';
 
 const AppStore = createStore({
 	page: 1,
 	courses_data: [],
 
-	labels: {
-		add_fav: "Dodaj do Ulubionych",
-		remove_fav: "Usuń z Ulubionych",
-	},
+	config: {},
 
 	courses: {
 		map: [],
@@ -122,6 +120,7 @@ const AppStore = createStore({
 			break;
 	}
 	this.state.revisions = revisionStore.getState();
+	this.state.config = configStore.getState();
 
 })
 
