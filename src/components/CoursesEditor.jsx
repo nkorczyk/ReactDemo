@@ -28,7 +28,7 @@ export const CoursesEditor = React.createClass({
 			{this.state.selected? <div className="col-xs-8">
 			  	<CourseForm course={this.state.selected}
 			  	onCancel={()=>this.select(null)}
-				onSave={(course)=>actions.saveCourse(course)}></CourseForm>
+				onSave={(course)=>this.props.saveCourse(course)}></CourseForm>
 			</div> : null}
 		</div>
 	}

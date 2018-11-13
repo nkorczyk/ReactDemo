@@ -1,6 +1,6 @@
 import React from 'react';
 import {Rating} from './Rating'
-import {CartButton} from './Cart'
+import {CartButtonContainer} from '../containers/buttons'
 
 export const CourseDetails = ({data}) => (
 	<div>
@@ -26,7 +26,7 @@ export const CourseDetails = ({data}) => (
 	  			</tr>
 	  		</tbody>
 	  	</table>
-		<CartButton course={data}/>
+		<CartButtonContainer course={data}/>
 	</div>
 )
 

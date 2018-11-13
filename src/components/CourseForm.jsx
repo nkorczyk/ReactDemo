@@ -1,7 +1,6 @@
 import React from 'react';
-
-import AppState from '../AppState'
 import {CourseCategoriesEditor} from './CourseCategoriesEditor'
+import AuthorSelectorContainer from '../containers/AuthorSelectorContainer'
 
 export const CourseForm = React.createClass({
 
@@ -96,11 +95,7 @@ export const CourseForm = React.createClass({
 						<div className="form-group">
 							<label className="control-label">Autor:</label>
 							<div>
-								<select className="form-control" value={this.state.course.author} onChange={this.changedAuthor}>
-									{Object.keys(AppState.state.authors_map).map(author=>
-									 	<option key={author} value={author}>{author}</option>
-									)}
-								</select>
+								<AuthorSelectorContainer value={this.state.course.author} onChange={this.changedAuthor} />
 							</div>
 						</div>
 					</div>

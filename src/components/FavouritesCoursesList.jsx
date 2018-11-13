@@ -6,6 +6,9 @@ import {Draggable} from './DragNDrop';
 import AppState from '../AppState';
 import actions from '../actions';
 
+import {FavButtonContainer} from '../containers/buttons'
+
+
 export const FavouritesCoursesList = ({list}) => (
 	<div>
 		<h1> Ulubione Kursy </h1>
@@ -19,9 +22,7 @@ export const FavouritesCoursesList = ({list}) => (
 		  		{/* Course Actions */}
 				<div className="btn-group pull-right">
 					<Button label="Szczególy kursu" />
-					<FavButton active={AppState.state.favourites_map[data.id]}  
-								onActivate={()=>actions.addFavourite(data.id)} 
-								onDeactivate={()=>actions.removeFavourite(data.id)}  />
+					<FavButtonContainer id={data.id}  />
 				</div>
 			</Course>)}
 		</div>

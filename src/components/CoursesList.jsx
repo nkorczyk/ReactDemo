@@ -2,14 +2,7 @@ import React from 'react';
 import {Draggable} from './DragNDrop'
 import {Course, CoursePromoLabel, CourseDetails} from './Course'
 import Button from './Button'
-import {FavButtonContainer} from '../containers/buttons';
-
-import AppState from '../AppState'
-// import actions from '../actions'
-
-if (module.hot) {
-  module.hot.accept();
-}
+import {FavButtonContainer} from '../containers/buttons'
 
 export const CoursesList = ({list}, context) => (
 	<div>
@@ -23,8 +16,8 @@ export const CoursesList = ({list}, context) => (
 
 				  		{/* Course Actions */}
 						<div className="btn-group pull-right">
-							<Button label="Szczególy kursu" />
-							<FavButtonContainer id={data.id} />
+							<Button label="Szczególy kursu" onClick={()=> context.router.push('/kursy/'+data.id)} />
+							<FavButtonContainer id={data.id}  />
 						</div>
 					</Course>
 				</Draggable>
@@ -32,7 +25,7 @@ export const CoursesList = ({list}, context) => (
 		</div>
 	</div>
 )
-
 CoursesList.contextTypes = {
-	actions: React.PropTypes.object
-};
+	actions: React.PropTypes.object,
+	router: React.PropTypes.object,
+}

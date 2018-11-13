@@ -1,35 +1,35 @@
 import { EventEmitter } from 'events';
 
-function createStore(initialState, actionsHandler, extraMethods) {
+function createStore(initialState, actionsHandler, extraMethods){
+	
+	const CHANGE_EVENT = 'change';
 
-    const CHANGE_EVENT = 'change';
+	const store = Object.assign({}, EventEmitter.prototype, {
 
-    const store = Object.assign({}, EventEmitter.prototype, {
+		state: initialState || {},
 
-        state: initialState || {},
+		emitChange: function(){
+			this.emit(CHANGE_EVENT)
+		},
 
-        emitChange: function () {
-            this.emit(CHANGE_EVENT)
-        },
+		subscribe: function(callback){
+			this.on(CHANGE_EVENT, callback)
+		},
 
-        subscribe: function (callback) {
-            this.on(CHANGE_EVENT, callback)
-        },
+		removeChangeListener: function(callback){
+			this.removeListener(callback)
+		},
 
-        removeChangeListener: function (callback) {
-            this.removeListener(callback)
-        },
+		getState: function(){
+			return this.state;
+		},
 
-        getState: function () {
-            return this.state;
-        },
+		dispatch: function(action){
+			actionsHandler.call(this, action)
+		}
 
-        dispatch: function (action) {
-            actionsHandler.call(this, action)
-        }
-
-    });
-    return store;
+	});
+	return store;
 }
 
 export default createStore;
