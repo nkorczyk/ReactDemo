@@ -3,12 +3,12 @@ import React from 'react';
 const Provider = React.createClass({
 
 	getInitialState: function(){
-		return this.props.store.state;
+		return this.props.store.getState();
 	},
 
 	componentDidMount: function(){
-		this.props.store.addListener(() => {
-			this.setState(this.props.store.state)
+		this.props.store.subscribe(() => {
+			this.setState(this.props.store.getState())
 		});
 	},
 

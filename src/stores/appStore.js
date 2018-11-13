@@ -1,78 +1,80 @@
 import createStore from './createStore';
+import ACTIONS from '../constants/actions';
 
 const AppStore = createStore({
 	page: 1,
 	courses_data: [],
 
-	labels:{
+	labels: {
 		add_fav: "Dodaj do Ulubionych",
 		remove_fav: "Usuń z Ulubionych",
 	},
 
-	courses:{
+	courses: {
 		map: [],
 		list: [],
 	},
 
-	authors:{
+	authors: {
 		map: [],
-		list: [],	
+		list: [],
 	},
 
-	favourites:{
-		map:{},
-		list:[]
+	favourites: {
+		map: {},
+		list: []
 	},
 
-	cart:{
-		map:{},
-		list:[]
+	cart: {
+		map: {},
+		list: []
 	}
-}, function(action){
+}, function (action) {
 	let payload = action.payload;
 	let state = this.state;
 
-	switch(action.type){
+	switch (action.type) {
 
-		case 'LOAD_COURSES':
+		case ACTIONS.LOAD_COURSES:
 
 			state.courses_data = payload;
-			state.courses.list = payload;
+			state.courses.list = state.courses_data.slice(0, state.page * 3);
 
-			state.courses_map = payload.reduce((map, course) => {
+			state.courses.map = payload.reduce((map, course) => {
 				map[course.id] = course;
 				return map;
-			},{})
+			}, {})
 
-			state.authors_map = payload.reduce((map, course)=>(
+			state.authors.map = payload.reduce((map, course) => (
 				(map[course.author] = course.author) && map
-			),{})
+			), {})
 
-			state.authors_list = Object.keys(state.authors_map);
-
-			this.emitChange();
-			break;
-
-		case 'LOAD_MORE_COURSES':
+			state.authors.list = Object.keys(state.authors.map);
 
 			this.emitChange();
 			break;
 
-		case 'SAVE_COURSE':
+		case ACTIONS.LOAD_MORE_COURSES:
+			state.page = state.page + 1;
+			state.courses.list = state.courses_data.slice(0, state.page * 3);
+			this.emitChange();
+			break;
+
+		case ACTIONS.SAVE_COURSE:
 			let id = course.id;
-			if('undefined' === typeof id){
+			if ('undefined' === typeof id) {
 				id = course.id = new Date();
 				state.courses_data.push(course);
 				state.courses.map[id] = course;
 				state.courses.list.unshift(course)
-			}else{
+			} else {
 				Object.assign(state.courses.map[id], course)
 			}
 
 			this.emitChange();
 			break;
 
-		case 'ADD_TO_FAVOURITES':
+		case ACTIONS.ADD_TO_FAVOURITES:
 
 			var id = payload.id
 			state.favourites.map[id] = true;
@@ -80,36 +82,36 @@ const AppStore = createStore({
 			this.emitChange();
 			break;
 
-		case 'REMOVE_FROM_FAVOURITES':
+		case ACTIONS.REMOVE_FROM_FAVOURITES:
 
 			var id = payload.id
 			state.favourites.map[id] = false;
-			var index = state.favourites.list.findIndex((c)=>c.id === id)
-			if(index !== -1)
-			state.favourites.list.splice(index,1)
+			var index = state.favourites.list.findIndex((c) => c.id === id)
+			if (index !== -1)
+				state.favourites.list.splice(index, 1)
 			this.emitChange();
 			break;
 
-		case 'ADD_TO_CART':
+		case ACTIONS.ADD_TO_CART:
 
 			var id = payload.id
-			if(!state.cart.map[id]){
+			if (!state.cart.map[id]) {
 				state.cart.map[id] = 1;
 				state.cart.list.push(state.courses.map[id])
-			}else{
+			} else {
 				state.cart.map[id]++
 			}
 			this.emitChange();
 			break;
 
-		case 'REMOVE_FROM_CART':
+		case ACTIONS.REMOVE_FROM_CART:
 
 			var id = payload.id
-			state.cart.map[id] === 0? 0 : state.cart.map[id]--;
-			if(!state.cart.map[id]){
-				let index = state.cart.list.findIndex((c)=>c.id === id)
-				if(index !== -1)
-				state.cart.list.splice(index,1)
+			state.cart.map[id] === 0 ? 0 : state.cart.map[id]--;
+			if (!state.cart.map[id]) {
+				let index = state.cart.list.findIndex((c) => c.id === id)
+				if (index !== -1)
+					state.cart.list.splice(index, 1)
 			}
 			this.emitChange();
 			break;
@@ -118,19 +120,10 @@ const AppStore = createStore({
 
 })
 
-
-import courses_data from '../courses_data';
-
-AppStore.subscribe(function(){
+AppStore.subscribe(function () {
 	console.log(AppStore.getState())
 })
 
-AppStore.dispatch({
-	type:'LOAD_COURSES',
-	payload: courses_data,
-	meta:{
-		timestamp: Date.now()
-	}
-})
-
 console.log(AppStore)
+
+export default AppStore;

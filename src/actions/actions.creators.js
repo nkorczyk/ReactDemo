@@ -1,70 +1,73 @@
-import appStore from '../stores/appStore';
+import ACTIONS from '../constants/actions';
 
-const dispatch = appStore.dispatch.bind(appStore);
+const makeActionCreators = function (dispatch) {
 
-const actioCreators = {
-    loadMore: function () {
-        dispatch({
-            type: 'LOAD_MORE_COURSES',
-            payload: {},
-            meta: {
-                timestamp: Date.now()
-            }
-        })
-    },
-    saveCourse: function (course) {
-        dispatch({
-            type: 'SAVE_COURSE',
-            payload: {
-                course
-            },
-            meta: {
-                timestamp: Date.now()
-            }
-        })
-    },
-    addFavourite: function (id) {
-        dispatch({
-            type: 'ADD_TO_FAVOURITES',
-            payload: {
-                id
-            },
-            meta: {
-                timestamp: Date.now()
-            }
-        })
-    },
-    removeFavourite: function (id) {
-        dispatch({
-            type: 'REMOVE_FROM_FAVOURITES',
-            payload: {
-                id
-            },
-            meta: {
-                timestamp: Date.now()
-            }
-        })
-    },
-    addToCart: function (id) {
-        dispatch({
-            type: 'ADD_TO_CART',
-            payload: {
-                id
-            },
-            meta: {
-                timestamp: Date.now()
-            }
-        })
-    },
-    removeFromCart: function (id) {
-        dispatch({
-            type: 'REMOVE_FROM_CART',
-            payload: {
-                id
-            },
-            meta: {
-                timestamp: Date.now()
-            }
-        })
+    return {
+        loadMore: function () {
+            dispatch({
+                type: ACTIONS.LOAD_MORE_COURSES,
+                payload: {},
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        },
+        saveCourse: function (course) {
+            dispatch({
+                type: ACTIONS.SAVE_COURSE,
+                payload: {
+                    course
+                },
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        },
+        addFavourite: function (id) {
+            dispatch({
+                type: ACTIONS.ADD_TO_FAVOURITES,
+                payload: {
+                    id
+                },
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        },
+        removeFavourite: function (id) {
+            dispatch({
+                type: ACTIONS.REMOVE_FROM_FAVOURITES,
+                payload: {
+                    id
+                },
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        },
+        addToCart: function (id) {
+            dispatch({
+                type: ACTIONS.ADD_TO_CART,
+                payload: {
+                    id
+                },
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        },
+        removeFromCart: function (id) {
+            dispatch({
+                type: ACTIONS.REMOVE_FROM_CART,
+                payload: {
+                    id
+                },
+                meta: {
+                    timestamp: Date.now()
+                }
+            })
+        }
     }
 }
+
+export default makeActionCreators;

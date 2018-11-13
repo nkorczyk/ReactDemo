@@ -20,12 +20,24 @@ import { Router, Route, IndexRoute, Redirect, IndexRedirect, browserHistory } fr
 import Provider from './Provider';
 import {Layout} from './components/Layout'
 
-import AppStore from './stores/appStore';
+import store from './stores/appStore';
+import actionsCreators from './actions/actions.creators';
 
-import AppState from './AppState';
-import actions from './actions';
+import courses_data from './courses_data';
+import ACTIONS from './constants/actions';
 
-ReactDOM.render(<Provider store={AppState} actions={actions}> 
+store.dispatch({
+	type: ACTIONS.LOAD_COURSES,
+	payload: courses_data,
+	meta: {
+		timestamp: Date.now()
+	}
+})
+
+// import AppState from './AppState';
+// import actions from './actions';
+
+ReactDOM.render(<Provider store={store} actions={actionsCreators(store.dispatch.bind(store))}> 
         	
     	<Router history={browserHistory}>
     		<Route path="/" component={Layout}>
