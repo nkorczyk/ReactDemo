@@ -1,5 +1,6 @@
 import createStore from './createStore';
 import ACTIONS from '../constants/actions';
+import revisionStore from '../stores/revisionStore';
 
 const AppStore = createStore({
 	page: 1,
@@ -28,6 +29,10 @@ const AppStore = createStore({
 	cart: {
 		map: {},
 		list: []
+	},
+
+	revisions: {
+		courses: {}
 	}
 }, function (action) {
 	let payload = action.payload;
@@ -115,8 +120,8 @@ const AppStore = createStore({
 			}
 			this.emitChange();
 			break;
-
 	}
+	this.state.revisions = revisionStore.getState();
 
 })
 

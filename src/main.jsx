@@ -26,7 +26,27 @@ import actionsCreators from './actions/actions.creators';
 import courses_data from './courses_data';
 import ACTIONS from './constants/actions';
 
-store.dispatch({
+import {dispatch, dispatcher} from './appDispatcher';
+
+dispatcher.register(function(action) {
+	store.dispatch(action);
+});
+
+import logStore from './stores/logStore';
+
+dispatcher.register(function(action) {
+	logStore.dispatch(action);
+});
+
+
+import revisions from './stores/revisionStore';
+
+dispatcher.register(function(action) {
+	revisions.dispatch(action);
+});
+
+
+dispatch({
 	type: ACTIONS.LOAD_COURSES,
 	payload: courses_data,
 	meta: {
@@ -37,7 +57,7 @@ store.dispatch({
 // import AppState from './AppState';
 // import actions from './actions';
 
-ReactDOM.render(<Provider store={store} actions={actionsCreators(store.dispatch.bind(store))}> 
+ReactDOM.render(<Provider store={store} actions={actionsCreators(dispatch)}> 
         	
     	<Router history={browserHistory}>
     		<Route path="/" component={Layout}>
