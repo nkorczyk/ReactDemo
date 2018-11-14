@@ -1,13 +1,17 @@
 import createStore from './createStore';
 import ACTIONS from '../constants/actions';
+import { dispatcher } from '../appDispatcher';
 import revisionStore from '../stores/revisionStore';
 import configStore from '../stores/configStore';
+import dataStore from '../stores/dataStore';
 
 const AppStore = createStore({
 	page: 1,
 	courses_data: [],
 
 	config: {},
+
+	entities: {},
 
 	courses: {
 		map: [],
@@ -36,21 +40,21 @@ const AppStore = createStore({
 	let payload = action.payload;
 	let state = this.state;
 
+	this.state.revisions = revisionStore.getState();
+	this.state.config = configStore.getState();
+	this.state.entities = dataStore.getState().entities;
+
 	switch (action.type) {
 
 		case ACTIONS.LOAD_COURSES:
+			dispatcher.waitFor([dataStore.dispatchToken]);
 
 			state.courses_data = payload;
 			state.courses.list = state.courses_data.slice(0, state.page * 3);
 
-			state.courses.map = payload.reduce((map, course) => {
-				map[course.id] = course;
-				return map;
-			}, {})
+			state.courses.map = this.state.entities.courses;
 
-			state.authors.map = payload.reduce((map, course) => (
-				(map[course.author] = course.author) && map
-			), {})
+			state.authors.map = this.state.entities.courses;
 
 			state.authors.list = Object.keys(state.authors.map);
 
@@ -119,9 +123,6 @@ const AppStore = createStore({
 			this.emitChange();
 			break;
 	}
-	this.state.revisions = revisionStore.getState();
-	this.state.config = configStore.getState();
-
 })
 
 AppStore.subscribe(function () {

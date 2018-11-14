@@ -38,6 +38,12 @@ dispatcher.register(function(action) {
 	logStore.dispatch(action);
 });
 
+import dataStore from './stores/dataStore';
+
+dataStore.dispatchToken =  dispatcher.register(function(action) {
+	dataStore.dispatch(action);
+});
+
 
 import revisions from './stores/revisionStore';
 
