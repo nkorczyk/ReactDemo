@@ -1,38 +1,27 @@
 import React from 'react';
 
-import { CoursesSearch } from './CoursesSearch';
-import { CourseForm } from './CourseForm';
+import {CoursesSearch} from './CoursesSearch';
+import {CourseForm} from './CourseForm';
 
 export const CoursesEditor = React.createClass({
 
-	getInitialState: function () {
-		return {
-			selected: null
-		}
-	},
-
-	select: function (course) {
-		this.setState({
-			selected: course
-		})
-	},
-
-
-	render: function () {
+	render: function(){
 		return <div>
-			<div className={this.state.selected ? "col-xs-4" : "col-xs-12"}>
+			<div className={this.props.selected? "col-xs-4" :  "col-xs-12"}>
 				<h1> Edytor Kursów </h1>
-				<hr />
-				<CoursesSearch courses={this.props.courses} onSelect={this.select} selected={this.state.selected}></CoursesSearch>
+				<hr/>
+				<CoursesSearch results={this.props.results} onSelect={this.props.select} onSearch={this.props.search} selected={this.props.selected}></CoursesSearch>
 			</div>
-			{this.state.selected ? <div className="col-xs-8">
-				<CourseForm course={this.state.selected}
-					onCancel={() => this.select(null)}
-					onSave={(course) => this.props.saveCourse(course)}></CourseForm>
-				<ul>
-					{this.props.revisions[this.state.selected.id] &&
-						this.props.revisions[this.state.selected.id].map((version) => <li onClick={() => this.select(version.revision)} key={version.timestamp}>{version.timestamp}</li>)}
-				</ul>
+			{this.props.selected? <div className="col-xs-8">
+			  	<CourseForm course={this.props.selected}
+			  	onCancel={()=>this.props.select(null)}
+				onSave={(course)=>this.props.saveCourse(course)}></CourseForm>
+				{this.props.revisions[this.props.selected.id]?
+					<ul>
+						{this.props.revisions[this.props.selected.id]
+							.map((version)=><li onClick={()=>this.props.select(version.revision)} key={version.timestamp}>{version.timestamp}</li>)}
+					</ul> : null
+				}
 			</div> : null}
 		</div>
 	}

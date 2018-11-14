@@ -1,69 +1,78 @@
 import createStore from './createStore';
 
 export default function createListStore(config) {
+	
+	let ACTIONS = {
+		LOAD: 'LOAD_'+config.name,
+		ADD: 'ADD_TO_'+config.name,
+		REMOVE: 'REMOVE_FROM_'+config.name,
+		SELECT: 'SELECT_IN_'+config.name,
+	}
+	Object.assign(ACTIONS, config.actions)
 
-    let ACTIONS = {
-        LOAD: 'LOAD_' + config.name,
-        ADD: 'ADD_TO_' + config.name,
-        REMOVE: 'REMOVE_FROM_' + config.name,
-    }
+	let store = createStore({
+		list: [],
+		map: {},
+		page: 1,
+		perpage: 3,
+		paged_list:[],
+		selected: null,
+	}, function(action){
 
-    Object.assign(ACTIONS, config.actions);
+		switch(action.type){
 
-    let store = createStore({
-        list: [],
-        map: {},
-        page: 1,
-        perpage: 3,
-        paged_list: []
-    }, function (action) {
-        switch (action.type) {
-            case ACTIONS.LOAD:
-                this.state.list = action.payload.map((item) => item.id);
-                this.state.map = this.state.list.reduce((map, item) => {
-                    map[item.id] = true;
-                    return map;
-                }, {});
+			case ACTIONS.SELECT:
 
-                this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage);
+				this.state.selected = action.payload;
+				this.emitChange();
+				break;
 
-                this.emitChange();
-                break;
 
-            case ACTIONS.LOAD_MORE:
-                this.state.page = this.state.page + 1;
+			case ACTIONS.LOAD:
+				this.state.list = action.payload.map((item)=>item.id);
+				this.state.map = this.state.list.reduce((map,item)=>{
+					map[item.id] = true;
+					return map;
+				},{})
+				this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage)
+				this.emitChange();
+				break;
 
-                this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage);
 
-                this.emitChange();
-                break;
+			case ACTIONS.LOAD_MORE:
 
-            case ACTIONS.ADD:
-                var id = action.payload.id;
+				this.state.page = this.state.page +1 
+				this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage)
+				this.emitChange();
+				break;
 
-                if (!this.state.map[id]) {
-                    this.state.list.push(id);
-                    this.state.map[id] = true;
-                }
-                this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage);
+			case ACTIONS.ADD:
+				var id = action.payload.id;
 
-                this.emitChange();
-                break;
+				if(!this.state.map[id]){
+					this.state.list.push(id);
+					this.state.map[id] = true;
+				}
+				this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage)
 
-            case ACTIONS.REMOVE:
-                var id = action.payload.id;
+				this.emitChange();
+				break;
 
-                if (this.state.map[id]) {
-                    this.state.indexOf(id);
-                    this.state.list.splice(index, 1);
-                    delete this.state.map[id];
-                }
-                this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage);
+			case ACTIONS.REMOVE:
 
-                this.emitChange();
-                break;
-        }
-    });
+				var id = action.payload.id;
+				if(this.state.map[id]){
+					let index = this.state.list.indexOf(id);
+					this.state.list.splice(index,1);
+					delete this.state.map[id];
+				}
+				this.state.paged_list = this.state.list.slice(0, this.state.page * this.state.perpage)
 
-    return store;
-};
+				this.emitChange();
+				break;
+
+		}
+	})
+
+	return store;
+}

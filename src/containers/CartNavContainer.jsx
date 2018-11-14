@@ -1,9 +1,17 @@
 import React from 'react';
 import connect from '../connect';
 import { Droppable, Draggable } from '../components/DragNDrop'
+import projector from './projector';
+
+const getCartList = projector([
+	state => state.cart.list,
+	state => state.entities.courses
+],(list, entities)=>(
+	{ cart_list: list.map(id => entities[id]) }
+))
 
 const CartNavContainer = connect(
-	({cart})=>({ cart_list: cart.list }),
+	getCartList,
 	({addToCart})=>({ addToCart }),
 	(state,actions,props)=>({
 		cart_size: state.cart_list.length,

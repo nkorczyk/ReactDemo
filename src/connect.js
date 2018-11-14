@@ -10,10 +10,10 @@ const connect = (
 
 		stateToProps = stateToProps || ((state) => state)
 		actionsToProps = actionsToProps || ((actions) => actions)
-		mergeProps = mergeProps || ((stateProps, actionsProps, props) => ({...stateProps, ...actionsProps, ...props}))
+		mergeProps = mergeProps || ((stateProps, actionsProps, props) => ({ ...stateProps, ...actionsProps, ...props }))
 
-		const stateProps = stateToProps( context.state );
-		const actionsProps = actionsToProps( context.actions );
+		const stateProps = stateToProps(context.state);
+		const actionsProps = actionsToProps(context.actions);
 		const mergedProps = mergeProps(stateProps, actionsProps, props);
 
 		return <Component {...mergedProps} />
@@ -26,4 +26,4 @@ const connect = (
 
 	return Container;
 }
-export default connect
+export default connect;

@@ -1,50 +1,54 @@
 import createStore from './createStore';
-import ACTIONS from '../constants/actions';
 
-const dataStore = createStore({
-    entities: {
-        courses: {},
-        authors: {},
-        categories: {}
-    }
-}, function (action) {
-    let payload = action.payload;
-    let state = this.state;
+import ACTIONS from '../constants/actions'
 
-    switch (action.type) {
-        case ACTIONS.LOAD_COURSES:
 
-            payload.forEach(course => {
-                this.state.entities.courses[course.id] = this.state.entities.courses[course.id] || course;
+const  dataStore = createStore({
+	entities:{
+		courses:{},
+		authors:{},
+		categories:{}
+	}
 
-                this.state.entities.authors[course.author] = this.state.entities.authors[course.author] || course.author;
+}, function(action) {
+	let payload = action.payload;
+	let state = this.state;
 
-                course.categories.forEach(category => {
-                    this.state.entities.categories[category] = this.state.entities.categories[category] || category;
-                });
-            });
+	switch(action.type){
 
-            this.emitChange();
-            break;
+		case ACTIONS.LOAD_COURSES:
 
-        case ACTIONS.LOAD_MORE_COURSES:
-            this.emitChange();
-            break;
+			payload.forEach(course => {
 
-        case ACTIONS.SAVE_COURSE:
-            var course = payload.course;
-            var id = course.id;
+				this.state.entities.courses[course.id] = this.state.entities.courses[course.id] || course;
 
-            this.state.entities.courses[id] = course;
-            this.state.entities.authors[course.author] = course.author;
+				this.state.entities.authors[course.author] = this.state.entities.authors[course.author] || course.author
 
-            course.categories.forEach(category => {
-                this.state.entities.categories[category] = this.state.entities.categories[category] || category;
-            });
+				course.categories.forEach(category => {
+					this.state.entities.categories[category] = this.state.entities.categories[category] || category;
+				})
+			})
 
-            this.emitChange();
-            break;
-    }
-});
+			this.emitChange();
+			break;
+
+		case ACTIONS.SAVE_COURSE:
+
+			var course = payload.course;
+			var id = course.id;
+
+			this.state.entities.courses[id] = course;
+			this.state.entities.authors[course.author] = course.author;
+
+			course.categories.forEach(category => {
+				this.state.entities.categories[category] = this.state.entities.categories[category] || category;
+			})
+
+			this.emitChange();
+			break;
+	}
+
+})
+
 
 export default dataStore;

@@ -3,9 +3,20 @@ import {FavouritesCoursesList} from '../components/FavouritesCoursesList';
 import {CoursesList} from '../components/CoursesList';
 import connect from '../connect';
 import React from 'react';
+import projector from './projector';
+
+
+const getCoursesList = (listSelector) => projector([
+	listSelector,
+	state => state.entities.courses
+], (list, entities) =>(
+	{
+		list: list.map(id => entities[id])
+	}
+))
 
 export const CoursesListContainer = connect(
-	({courses})=>({ list: courses.list}),
+	getCoursesList( state => state.courses.paged_list ),
 	({loadMore})=>({ loadMore })
 )((props)=>(
 <div>
@@ -15,10 +26,6 @@ export const CoursesListContainer = connect(
 </div>
 ));
 
-export const ShoppingCartListContainer = connect((state)=>({
-	list: state.cart.list
-}))(ShoppingCartList)
+export const ShoppingCartListContainer = connect(getCoursesList( state => state.cart.list ))(ShoppingCartList)
 
-export const FavouritesCoursesListContainer = connect((state)=>({
-	list: state.favourites.list
-}))(FavouritesCoursesList)
+export const FavouritesCoursesListContainer = connect(getCoursesList( state => state.favourites.list ))(FavouritesCoursesList)
