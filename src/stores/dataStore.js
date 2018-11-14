@@ -37,7 +37,8 @@ const  dataStore = createStore({
 			var course = payload.course;
 			var id = course.id;
 
-			this.state.entities.courses[id] = course;
+			//this.state.entities.courses[id] = course;
+			this.state.entities.courses = { ...this.state.entities.courses, [id]: course };
 			this.state.entities.authors[course.author] = course.author;
 
 			course.categories.forEach(category => {
