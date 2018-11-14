@@ -14,7 +14,7 @@ export const CourseDetails = ({data}) => (
 		  		</tr>
 		  		<tr>
 		  			<th>Autor</th>
-		  			<td>{data.author}</td>
+		  			<td>{data.author.name}</td>
 	  			</tr>
 		  		<tr>
 		  			<th>Czas trwania</th>

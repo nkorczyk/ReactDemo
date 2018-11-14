@@ -22,7 +22,7 @@ const  dataStore = createStore({
 
 				this.state.entities.courses[course.id] = this.state.entities.courses[course.id] || course;
 
-				this.state.entities.authors[course.author] = this.state.entities.authors[course.author] || course.author
+				this.state.entities.authors[course.author.id] = this.state.entities.authors[course.author.id] || course.author
 
 				course.categories.forEach(category => {
 					this.state.entities.categories[category] = this.state.entities.categories[category] || category;

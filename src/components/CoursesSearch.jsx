@@ -57,7 +57,7 @@ export const CoursesSearch = React.createClass({
 					<a href="#" key={course.id} className={"list-group-item " + (this.props.selected === course? "active":"")}
 					   onClick={()=>this.props.onSelect(course)}>
 						<h4 className="list-group-item-heading"> {course.title} </h4>
-						<p className="list-group-item-text"> {course.author} </p>
+						<p className="list-group-item-text"> {course.author.name} </p>
 					</a>
 				))}
 			</div>

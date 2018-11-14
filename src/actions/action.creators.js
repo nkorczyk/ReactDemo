@@ -74,7 +74,7 @@ const makeActionCreators = function(dispatch){
 			let search_results = courses_list.filter((course) => (
 				  course.title.toLowerCase().includes(query.toLowerCase()) 
 				|| course.description.toLowerCase().includes(query.toLowerCase())
-				|| course.author.toLowerCase().includes(query.toLowerCase())
+				|| course.author.name.toLowerCase().includes(query.toLowerCase())
 			))
 
 			dispatch({

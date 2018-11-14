@@ -28,9 +28,9 @@ export const CourseForm = React.createClass({
 		})
 	},
 
-	changedAuthor: function(e){
+	changedAuthor: function(author){
 		this.setState({
-			course: {...this.state.course, author: e.target.value}
+			course: {...this.state.course, author: author}
 		})
 	},
 
@@ -95,7 +95,7 @@ export const CourseForm = React.createClass({
 						<div className="form-group">
 							<label className="control-label">Autor:</label>
 							<div>
-								<AuthorSelectorContainer value={this.state.course.author} onChange={this.changedAuthor} />
+								<AuthorSelectorContainer value={this.state.course.author.id} onChange={this.changedAuthor} />
 							</div>
 						</div>
 					</div>

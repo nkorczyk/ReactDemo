@@ -70,6 +70,7 @@ const AppStore = createStore({
 	courses:{
 		map: [],
 		list: [],
+		paged_list: []
 	},
 
 	authors:{
@@ -131,7 +132,9 @@ const AppStore = createStore({
 
 			state.authors.map = this.state.entities.authors;
 
-			state.authors.list = Object.keys(state.authors.map);
+			state.authors.list = Object.keys(state.authors.map).map(id => (
+				state.authors.map[id] 
+			));
 
 			this.emitChange();
 			break;

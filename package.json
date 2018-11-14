@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nkorczyk/ReactDemo#readme",
   "dependencies": {
+    "axios": "^0.15.1",
     "bloodhound-js": "^1.2.1",
     "bootstrap": "^3.3.7",
     "flux": "^3.0.0",
