@@ -1,9 +1,48 @@
 import createStore from './createStore';
 import ACTIONS from '../constants/actions';
-import { dispatcher } from '../appDispatcher';
+import { dispatcher, dispatch } from '../appDispatcher';
 import revisionStore from '../stores/revisionStore';
 import configStore from '../stores/configStore';
 import dataStore from '../stores/dataStore';
+import createListStore from '../stores/createListStore';
+
+const CoursesListStore = createListStore({
+	name: 'COURSES',
+	actions: {
+		LOAD: ACTIONS.LOAD_COURSES,
+		LOAD_MORE: ACTIONS.LOAD_MORE_COURSES,
+	}
+});
+
+dispatcher.register(function (action) {
+	CoursesListStore.dispatch(action);
+});
+
+const FavouritesListStore = createListStore({
+	name: 'FAVOURITES',
+	actions: {
+		ADD: ACTIONS.ADD_TO_FAVOURITES,
+		REMOVE: ACTIONS.REMOVE_FROM_FAVOURITES
+	}
+});
+
+dispatcher.register(function (action) {
+	FavouritesListStore.dispatch(action);
+});
+
+const CartListStore = createListStore({
+	name: 'CART',
+	actions: {
+		ADD: ACTIONS.ADD_TO_CART,
+		REMOVE: ACTIONS.REMOVE_FROM_CART
+	}
+});
+
+dispatcher.register(function (action) {
+	CartListStore.dispatch(action);
+});
+
+console.log(dispatch);
 
 const AppStore = createStore({
 	page: 1,
@@ -43,6 +82,8 @@ const AppStore = createStore({
 	this.state.revisions = revisionStore.getState();
 	this.state.config = configStore.getState();
 	this.state.entities = dataStore.getState().entities;
+	this.state.favourites.list = FavouritesListStore.getState().list.map((id) => this.state.entities.courses[id]);
+	this.state.favourites.map = FavouritesListStore.getState().map;
 
 	switch (action.type) {
 
@@ -50,9 +91,11 @@ const AppStore = createStore({
 			dispatcher.waitFor([dataStore.dispatchToken]);
 
 			state.courses_data = payload;
-			state.courses.list = state.courses_data.slice(0, state.page * 3);
+			// state.courses.list = state.courses_data.slice(0, state.page * 3);
+			// state.courses.map = this.state.entities.courses;
 
-			state.courses.map = this.state.entities.courses;
+			state.courses.list = CoursesListStore.getState().paged_list.map((id) => this.state.entities.courses[id]);
+			state.courses.map = CoursesListStore.getState().map;
 
 			state.authors.map = this.state.entities.courses;
 
@@ -62,8 +105,7 @@ const AppStore = createStore({
 			break;
 
 		case ACTIONS.LOAD_MORE_COURSES:
-			state.page = state.page + 1;
-			state.courses.list = state.courses_data.slice(0, state.page * 3);
+			state.courses.list = CoursesListStore.getState().paged_list.map((id) => this.state.entities.courses[id]);
 			this.emitChange();
 			break;
 
@@ -82,44 +124,20 @@ const AppStore = createStore({
 			break;
 
 		case ACTIONS.ADD_TO_FAVOURITES:
-
-			var id = payload.id
-			state.favourites.map[id] = true;
-			state.favourites.list.push(state.courses.map[id])
-			this.emitChange();
-			break;
-
 		case ACTIONS.REMOVE_FROM_FAVOURITES:
 
-			var id = payload.id
-			state.favourites.map[id] = false;
-			var index = state.favourites.list.findIndex((c) => c.id === id)
-			if (index !== -1)
-				state.favourites.list.splice(index, 1)
+			this.state.favourites.list = FavouritesListStore.getState().list.map((id) => this.state.entities.courses[id]);
+			this.state.favourites.map = FavouritesListStore.getState().map;
+
 			this.emitChange();
 			break;
 
 		case ACTIONS.ADD_TO_CART:
-
-			var id = payload.id
-			if (!state.cart.map[id]) {
-				state.cart.map[id] = 1;
-				state.cart.list.push(state.courses.map[id])
-			} else {
-				state.cart.map[id]++
-			}
-			this.emitChange();
-			break;
-
 		case ACTIONS.REMOVE_FROM_CART:
 
-			var id = payload.id
-			state.cart.map[id] === 0 ? 0 : state.cart.map[id]--;
-			if (!state.cart.map[id]) {
-				let index = state.cart.list.findIndex((c) => c.id === id)
-				if (index !== -1)
-					state.cart.list.splice(index, 1)
-			}
+			this.state.cart.list = CartListStore.getState().list.map((id) => this.state.entities.courses[id]);
+			this.state.cart.map = CartListStore.getState().map;
+
 			this.emitChange();
 			break;
 	}
