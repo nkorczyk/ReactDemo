@@ -42,12 +42,17 @@ dataStore.dispatchToken = dispatcher.register(function (action) {
 	dataStore.dispatch(action)
 })
 
-
 import revisionStore from './stores/revisionStore'
 dispatcher.register(function (action) {
 	revisionStore.dispatch(action)
 })
-console.log(revisionStore);
+
+import reduxStore from './stores/reduxStore';
+
+console.log('reduxStore', reduxStore);
+reduxStore.subscribe(() => {
+	console.log('reduxStore state: ', reduxStore.getState());
+})
 
 let actions = actionCreators(dispatch);
 
