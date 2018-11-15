@@ -27,35 +27,38 @@ import ACTIONS from './constants/actions';
 
 import { dispatcher, dispatch } from './appDispatcher';
 
-dispatcher.register(function (action) {
-	store.dispatch(action);
-})
+// dispatcher.register(function(action) {
+// 	store.dispatch(action);
+// })
 
-import logStore from './stores/logStore'
-dispatcher.register(function (action) {
-	logStore.dispatch(action)
-})
+// import logStore from './stores/logStore'
+// dispatcher.register(function(action) {
+// 	logStore.dispatch(action)
+// })
 
-import dataStore from './stores/dataStore'
-dataStore.dispatchToken = dispatcher.register(function (action) {
-	dataStore.dispatch(action)
-})
+// import dataStore from './stores/dataStore'
+// dataStore.dispatchToken = dispatcher.register(function(action) {
+// 	dataStore.dispatch(action)
+// })
 
-import revisionStore from './stores/revisionStore'
-dispatcher.register(function (action) {
-	revisionStore.dispatch(action)
-})
+
+// import revisionStore from './stores/revisionStore'
+// dispatcher.register(function(action) {
+// 	revisionStore.dispatch(action)
+// })
 
 import reduxStore from './stores/reduxStore';
 
-console.log('reduxStore', reduxStore);
+console.log('reduxStore:', reduxStore)
 dispatcher.register(function (action) {
 	reduxStore.dispatch(action)
 })
 
 reduxStore.subscribe(() => {
-	console.log('reduxStore state: ', reduxStore.getState());
+	console.log('reduxStore state:', reduxStore.getState())
 })
+
+// import courses_data from './courses_data';
 
 let actions = actionCreators(dispatch);
 
@@ -65,8 +68,10 @@ actions.fetchFavourites();
 
 actions.fetchCart();
 
-ReactDOM.render(<Provider store={reduxStore} actions={actions}>
+import DevTools from './DevTools'
 
+ReactDOM.render(<Provider store={reduxStore} actions={actions}>
+	<DevTools store={reduxStore} />
 	<Router history={browserHistory}>
 		<Route path="/" component={Layout}>
 			<IndexRedirect to="kursy" />

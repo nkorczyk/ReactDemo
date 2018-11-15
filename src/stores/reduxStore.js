@@ -2,6 +2,8 @@ import { createStore, combineReducers } from 'redux';
 import ACTIONS from '../constants/actions';
 import createListReducer from './createListReducer';
 
+import DevTools from '../DevTools';
+
 const initialState = {
 
 }
@@ -107,6 +109,6 @@ const rootReducer = combineReducers({
     }),
 });
 
-const store = createStore(rootReducer, initialState)
+const store = createStore(rootReducer, initialState, DevTools.instrument());
 
 export default store;
