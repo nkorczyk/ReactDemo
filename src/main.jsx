@@ -23,7 +23,6 @@ import { Layout } from './components/Layout'
 import store from './stores/appStore';
 import actionCreators from './actions/action.creators.js'
 
-
 import ACTIONS from './constants/actions';
 
 import { dispatcher, dispatch } from './appDispatcher';
@@ -50,6 +49,10 @@ dispatcher.register(function (action) {
 import reduxStore from './stores/reduxStore';
 
 console.log('reduxStore', reduxStore);
+dispatcher.register(function (action) {
+	reduxStore.dispatch(action)
+})
+
 reduxStore.subscribe(() => {
 	console.log('reduxStore state: ', reduxStore.getState());
 })
@@ -62,7 +65,7 @@ actions.fetchFavourites();
 
 actions.fetchCart();
 
-ReactDOM.render(<Provider store={store} actions={actionCreators(dispatch)}>
+ReactDOM.render(<Provider store={reduxStore} actions={actions}>
 
 	<Router history={browserHistory}>
 		<Route path="/" component={Layout}>
