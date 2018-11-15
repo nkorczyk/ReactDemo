@@ -1,6 +1,6 @@
 import createStore from './createStore';
 import ACTIONS from '../constants/actions'
-import {dispatcher, dispatch} from '../appDispatcher'
+import { dispatcher, dispatch } from '../appDispatcher'
 
 import revisionStore from './revisionStore'
 import configStore from './configStore'
@@ -9,51 +9,51 @@ import createListStore from './createListStore'
 
 
 const CoursesListStore = createListStore({
-	name:'COURSES',
-	actions:{
+	name: 'COURSES',
+	actions: {
 		LOAD: ACTIONS.LOAD_COURSES,
 		LOAD_MORE: ACTIONS.LOAD_MORE_COURSES
 	}
 })
 
-dispatcher.register(function(action){
+dispatcher.register(function (action) {
 	CoursesListStore.dispatch(action)
 })
 
 const FavouritesListStore = createListStore({
-	name:'FAVOURITES',
-	actions:{
+	name: 'FAVOURITES',
+	actions: {
 		ADD: ACTIONS.ADD_TO_FAVOURITES,
 		REMOVE: ACTIONS.REMOVE_FROM_FAVOURITES
 	}
 })
 
-dispatcher.register(function(action){
+dispatcher.register(function (action) {
 	FavouritesListStore.dispatch(action)
 })
 
 const CartListStore = createListStore({
-	name:'CART',
-	actions:{
+	name: 'CART',
+	actions: {
 		ADD: ACTIONS.ADD_TO_CART,
 		REMOVE: ACTIONS.REMOVE_FROM_CART
 	}
 })
 
-dispatcher.register(function(action){
+dispatcher.register(function (action) {
 	CartListStore.dispatch(action)
 })
 
 const SearchResultsListStore = createListStore({
-	name:'SEARCH_RESULTS',
-	actions:{
+	name: 'SEARCH_RESULTS',
+	actions: {
 		LOAD: ACTIONS.LOAD_SEARCH_RESULTS,
 		LOAD_MORE: 'LOAD_MORE_SEARCH_RESULTS',
 		SELECT: ACTIONS.SELECT_IN_SEARCH_RESULTS
 	}
 })
 
-dispatcher.register(function(action){
+dispatcher.register(function (action) {
 	SearchResultsListStore.dispatch(action)
 })
 
@@ -62,42 +62,43 @@ console.log(dispatch)
 const AppStore = createStore({
 	page: 1,
 	courses_data: [],
+	isLoading: false,
 
-	config:{},
+	config: {},
 
-	entities:{},
+	entities: {},
 
-	courses:{
+	courses: {
 		map: [],
 		list: [],
 		paged_list: []
 	},
 
-	authors:{
+	authors: {
 		map: [],
-		list: [],	
+		list: [],
 	},
 
-	favourites:{
-		map:{},
-		list:[]
+	favourites: {
+		map: {},
+		list: []
 	},
 
-	cart:{
-		map:{},
-		list:[]
+	cart: {
+		map: {},
+		list: []
 	},
 
-	search_results:{
+	search_results: {
 		list: [],
 		selected: null
 	},
 
 	revisions: {
-		courses:{}
+		courses: {}
 	}
 
-}, function(action){
+}, function (action) {
 	let payload = action.payload;
 	let state = this.state;
 
@@ -106,7 +107,19 @@ const AppStore = createStore({
 	this.state.entities = dataStore.getState().entities;
 
 
-	switch(action.type){
+	switch (action.type) {
+
+		case ACTIONS.START_LOADING:
+			this.state.isLoading = true;
+
+			this.emitChange();
+			break;
+
+		case ACTIONS.STOP_LOADING:
+			this.state.isLoading = false;
+
+			this.emitChange();
+			break;
 
 		case ACTIONS.LOAD_SEARCH_RESULTS:
 
@@ -133,7 +146,7 @@ const AppStore = createStore({
 			state.authors.map = this.state.entities.authors;
 
 			state.authors.list = Object.keys(state.authors.map).map(id => (
-				state.authors.map[id] 
+				state.authors.map[id]
 			));
 
 			this.emitChange();
@@ -160,7 +173,7 @@ const AppStore = createStore({
 			// }
 
 			state.search_results.list = SearchResultsListStore.getState().list
-			state.search_results.selected = state.entities.courses[ payload.course.id ]
+			state.search_results.selected = state.entities.courses[payload.course.id]
 
 			this.emitChange();
 			break;
@@ -188,8 +201,7 @@ const AppStore = createStore({
 })
 
 
-
-AppStore.subscribe(function(){
+AppStore.subscribe(function () {
 	console.log(AppStore.getState())
 })
 

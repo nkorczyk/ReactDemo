@@ -47,21 +47,12 @@ import revisionStore from './stores/revisionStore'
 dispatcher.register(function (action) {
 	revisionStore.dispatch(action)
 })
-console.log(revisionStore)
+console.log(revisionStore);
 
-import axios from 'axios';
-axios.get('http://localhost:3000/courses?_expand=author')
-	.then(response => {
-		let courses_data = response.data;
+let actions = actionCreators(dispatch);
 
-		dispatch({
-			type: ACTIONS.LOAD_COURSES,
-			payload: courses_data,
-			meta: {
-				timestamp: Date.now()
-			}
-		})
-	})
+actions.fetchCourses();
+
 // import courses_data from './courses_data';
 // dispatch({
 // 	type: ACTIONS.LOAD_COURSES,
