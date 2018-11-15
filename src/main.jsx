@@ -53,17 +53,9 @@ let actions = actionCreators(dispatch);
 
 actions.fetchCourses();
 
-// import courses_data from './courses_data';
-// dispatch({
-// 	type: ACTIONS.LOAD_COURSES,
-// 	payload: courses_data,
-// 	meta:{
-// 		timestamp: Date.now()
-// 	}
-// })
+actions.fetchFavourites();
 
-// import AppState from './AppState';
-// import actions from './actions';
+actions.fetchCart();
 
 ReactDOM.render(<Provider store={store} actions={actionCreators(dispatch)}>
 

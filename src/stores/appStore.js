@@ -23,6 +23,7 @@ dispatcher.register(function (action) {
 const FavouritesListStore = createListStore({
 	name: 'FAVOURITES',
 	actions: {
+		LOAD: ACTIONS.LOAD_FAVOURITES,
 		ADD: ACTIONS.ADD_TO_FAVOURITES,
 		REMOVE: ACTIONS.REMOVE_FROM_FAVOURITES
 	}
@@ -35,6 +36,7 @@ dispatcher.register(function (action) {
 const CartListStore = createListStore({
 	name: 'CART',
 	actions: {
+		LOAD: ACTIONS.LOAD_CART,
 		ADD: ACTIONS.ADD_TO_CART,
 		REMOVE: ACTIONS.REMOVE_FROM_CART
 	}
